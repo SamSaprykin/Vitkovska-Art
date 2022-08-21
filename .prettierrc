@@ -1,0 +1,4 @@
+{
+  "trailingComma": "all",
+  "object-curly-newline": "off"
+}
