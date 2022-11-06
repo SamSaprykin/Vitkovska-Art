@@ -8,7 +8,6 @@ import SEO from "../components/seo";
 import Hero from "../components/heroSection";
 import FeaturedArts from "../components/featuredArts";
 import HomeServices from "../components/homeServices";
-import TextScroll from "../components/textScroll";
 import useLatestArts from "../hooks/useLatestArts";
 
 const IndexPage = () => {
@@ -19,7 +18,6 @@ const IndexPage = () => {
       <SEO title="Home" />
       <Hero />
       <FeaturedArts arts={latestArts.edges} />
-      <TextScroll />
       <HomeServices />
     </>
   );
