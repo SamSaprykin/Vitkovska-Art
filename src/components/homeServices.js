@@ -46,7 +46,7 @@ const HomeServices = () => {
   const [expanded, setExpanded] = useState(0);
   const animation = useAnimation();
   const [aboutRef, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     rootMargin: "-300px",
   });
 
@@ -56,44 +56,125 @@ const HomeServices = () => {
     }
   }, [animation, inView]);
 
+  const sentence = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const letter = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 200,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 40,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 200,
+      },
+    },
+  };
+  const Line1 = "Hello guys!";
+  const Line2 = "My name is Ekaterina";
+  const Line3 = "and I`m Digital artist";
   return (
-    <motion.div
-      ref={aboutRef}
-      animate={animation}
-      initial="hidden"
-      className="my-30"
-      variants={{
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] },
-        },
-        hidden: { opacity: 0, y: 72 },
-      }}
-    >
+    <div className="relative min-h-screen overflow-hidden bg-white mx-8">
       <Container>
         <Flex alignTop>
           <About>
-            <h2 className="text-[45px] mb-[55px] text-dark tracking-wide font-[500] font-sans  max-w-[454px] leading-extratight">
-              Hello guys! <br /> My name is Ekaterina and I`m Digital artist
-            </h2>
-            <p className="text-[20px] text-offblack tracking-wide font-light font-display  max-w-[719px] leading-[1.2]">
-              Fantasy art is a genre of art that depicts magical or other
-              supernatural themes, ideas, creatures or settings. While there is
-              some overlap with science fiction, horror and other speculative
-              fiction art, there are unique elements not generally found in
-              other forms of speculative fiction art. Depictions of ancient
-              myths and legends, as well as depictions of modern day fantasy in
-              the form of divine interventions and other magical or supernatural
-              forces, are very common elements, and help distinguish fantasy art
-              from other forms. Dragons, wizards, fairies and other fantastical
-              and mythical creatures are common features in fantasy art. <br />{" "}
-              <br />
-              Fantasy art is strongly linked to fantasy fiction. Indeed fantasy
-              art pieces are often intended to represent specific characters or
-              scenes from works of fantasy literature. Such works created by
-              amateur artists may be called fanart.
-            </p>
+            <motion.h2
+              variants={sentence}
+              ref={aboutRef}
+              initial="hidden"
+              animate={animation}
+              className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+            >
+              {Line1.split("").map((char, index) => {
+                return (
+                  <motion.span key={`${char}${index}`} variants={letter}>
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </motion.h2>
+            <motion.h2
+              variants={sentence}
+              ref={aboutRef}
+              initial="hidden"
+              animate={animation}
+              className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+            >
+              {Line2.split("").map((char, index) => {
+                return (
+                  <motion.span key={`${char}${index}`} variants={letter}>
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </motion.h2>
+            <motion.h2
+              variants={sentence}
+              ref={aboutRef}
+              initial="hidden"
+              animate={animation}
+              className="text-[45px] mb-[55px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+            >
+              {Line3.split("").map((char, index) => {
+                return (
+                  <motion.span key={`${char}${index}`} variants={letter}>
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </motion.h2>
+            <motion.div
+              animate={animation}
+              initial="hidden"
+              className="relative min-h-screen overflow-hidden"
+              variants={{
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    delay: 1.6,
+                    ease: [0.6, 0.05, -0.01, 0.9],
+                  },
+                },
+                hidden: { opacity: 0, y: 72 },
+              }}
+            >
+              <p className="text-[20px] text-offblack tracking-wide font-light font-display  max-w-[719px] leading-[1.2]">
+                Fantasy art is a genre of art that depicts magical or other
+                supernatural themes, ideas, creatures or settings. While there
+                is some overlap with science fiction, horror and other
+                speculative fiction art, there are unique elements not generally
+                found in other forms of speculative fiction art. Depictions of
+                ancient myths and legends, as well as depictions of modern day
+                fantasy in the form of divine interventions and other magical or
+                supernatural forces, are very common elements, and help
+                distinguish fantasy art from other forms. Dragons, wizards,
+                fairies and other fantastical and mythical creatures are common
+                features in fantasy art. <br /> <br />
+                Fantasy art is strongly linked to fantasy fiction. Indeed
+                fantasy art pieces are often intended to represent specific
+                characters or scenes from works of fantasy literature. Such
+                works created by amateur artists may be called fanart.
+              </p>
+            </motion.div>
           </About>
           <Services>
             <h3 className="text-[48px] leading-extratight font-light tracking-wide font-display mb-[32px]">
@@ -110,7 +191,7 @@ const HomeServices = () => {
           </Services>
         </Flex>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 
@@ -158,19 +239,10 @@ const Accordion = ({ details, expanded, setExpanded }) => {
 const Container = styled.div`
   flex-grow: 1;
   margin: 0 auto;
-  padding: 0 32px;
   position: relative;
   width: auto;
   height: 100%;
-  @media (min-width: 1024px) {
-    max-width: 960px;
-  }
-  @media (min-width: 1216px) {
-    max-width: 1152px;
-  }
-  @media (min-width: 1408px) {
-    max-width: 1244px;
-  }
+
   ${(props) =>
     props.fluid &&
     css`
@@ -211,22 +283,12 @@ const About = styled.div`
   width: 100%;
 `;
 const Services = styled.div`
-  width: 300px;
+  width: 500px;
+  margin-top: 5vh;
 `;
 
 // Accordion
 
-const AccordionHeader = styled(motion.div)`
-  width: 100%;
-  color: #ea281e;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  font-size: 1.15rem;
-  margin: 8px 0;
-  }
-`;
 const AccordionIcon = styled.div`
   display: flex;
   align-items: center;
@@ -234,22 +296,9 @@ const AccordionIcon = styled.div`
   margin-right: 8px;
   span {
     width: 16px;
-    height: 4px;
-    background: #e78831;
+    height: 3px;
+    background: #202020;
     transition: all 0.1s ease-in-out;
-  }
-`;
-
-const AccordionContent = styled(motion.div)`
-  overflow: hidden;
-  padding-left: 40px;
-  span {
-    width: 100%;
-    margin: 8px 0;
-    font-size: 0.875rem;
-    color: #ea281e;
-    display: block;
-    font-weight: 300;
   }
 `;
 

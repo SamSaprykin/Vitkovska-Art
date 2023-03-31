@@ -73,6 +73,9 @@ module.exports = {
       translate: {
         neg50: "-50%",
       },
+      rotate: {
+        neg90: "-90deg",
+      },
     },
   },
   variants: {

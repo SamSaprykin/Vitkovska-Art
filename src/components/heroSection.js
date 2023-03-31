@@ -30,6 +30,16 @@ const sentence = {
   },
 };
 
+const sentenceArt = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
 const letter = {
   visible: {
     opacity: 1,
@@ -51,13 +61,35 @@ const letter = {
   },
 };
 
+const letterArt = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 400,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: 40,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+};
+
 const Line1 = "Vitkovskaya";
+const Line2 = "Art";
 
 function Hero({ siteTitle, location }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white">
+    <div className="relative min-h-screen overflow-hidden bg-white mx-8">
       <motion.h2
-        className="text-[200px] flex overflow-hidden pr-px text-white font-light font-sans relative z-10 mix-blend-difference"
+        className="text-[140px] flex overflow-hidden pr-px text-white font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
         variants={sentence}
         initial="hidden"
         animate="visible"
@@ -70,7 +102,21 @@ function Hero({ siteTitle, location }) {
           );
         })}
       </motion.h2>
-      <div className="bg-white flex absolute left-2/4 translate-x-neg50 bottom-32">
+      <motion.h2
+        className="text-[240px] flex overflow-hidden pr-px text-white font-normal font-sans relative z-10 leading-tight mix-blend-difference"
+        variants={sentenceArt}
+        initial="hidden"
+        animate="visible"
+      >
+        {Line2.split("").map((char, index) => {
+          return (
+            <motion.span key={`${char}${index}`} variants={letterArt}>
+              {char}
+            </motion.span>
+          );
+        })}
+      </motion.h2>
+      <div className="bg-white flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px]">
         <ScrollDown />
       </div>
       <div className="absolute right-0 top-0">

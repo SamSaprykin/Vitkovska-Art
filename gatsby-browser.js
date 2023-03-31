@@ -1,5 +1,5 @@
 import "./src/styles/globals.css";
-import "./src/styles/scroll.css";
+
 import React from "react";
 import Layout from "./src/components/layout";
 
@@ -19,7 +19,7 @@ export const shouldUpdateScroll = ({
     const savedPosition = getSavedScrollPosition(location);
     window.setTimeout(
       () => window.scrollTo(...(savedPosition || [0, 0])),
-      transitionDelay
+      transitionDelay,
     );
   }
   return false;
