@@ -42,10 +42,10 @@ const Cursor = (props) => {
       }}
       className="fixed z-[99999] w-0 h-0 bg-red-500"
     >
-      {!props.hideCursor == true ? (
+      {!props.hideCursor === true ? (
         <motion.div
           layoutId="cursor"
-          className="absolute w-4 h-4 -top-2 -left-2 bg-[#e78831] pointer-events-none rounded-full"
+          className={`absolute w-4 h-4 -top-2 -left-2 bg-[#e78831] pointer-events-none rounded-full`}
         ></motion.div>
       ) : null}
     </motion.div>
@@ -84,8 +84,9 @@ const Layout = ({ children, location }) => {
       }
     }
   `);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const [magnetActive, setMagnetActive] = useState(false);
+
   return (
     <>
       <Cursor hideCursor={magnetActive} />
@@ -95,7 +96,7 @@ const Layout = ({ children, location }) => {
         setMagnetActive={setMagnetActive}
         magnetActive={magnetActive}
       />
-      <div className="pt-32 px-8">
+      <div className="pt-32 px-8 bg-bgMain">
         <AnimatePresence>
           <motion.main
             key={location.pathname}

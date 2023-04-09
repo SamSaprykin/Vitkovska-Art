@@ -41,6 +41,7 @@ module.exports = {
         prbred: "#dc481e",
         dark: "#202020",
         orangeMain: "#E78831",
+        bgMain: "rgb(19, 20, 26)",
       },
       height: {
         half: "50%",

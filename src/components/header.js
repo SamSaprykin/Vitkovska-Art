@@ -19,6 +19,25 @@ const revealInOut = {
   },
 };
 
+const links = [
+  {
+    linkName: "Home",
+    url: "/",
+  },
+  {
+    linkName: "Arts",
+    url: "/arts",
+  },
+  {
+    linkName: "About",
+    url: "/about",
+  },
+  {
+    linkName: "Contact",
+    url: "/contact",
+  },
+];
+
 const Menu = ({ isOpen, setOpen }) => {
   return (
     <AnimatePresence exitBeforeEnter>
@@ -34,37 +53,27 @@ const Menu = ({ isOpen, setOpen }) => {
         animate={{
           y: !isOpen ? "-100%" : "0%",
         }}
-        className="fixed inset-0 bg-slate-50/90 backdrop-blur z-[-1]"
+        className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1]"
       >
-        <div className="flex px-[5%] flex-col justify-center h-full">
-          <Link
-            className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
-            to="/"
-            onClick={() => setOpen(!isOpen)}
-          >
-            Home
-          </Link>
-          <Link
-            className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
-            to="/arts"
-            onClick={() => setOpen(!isOpen)}
-          >
-            Arts
-          </Link>
-          <Link
-            className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
-            to="/about"
-            onClick={() => setOpen(!isOpen)}
-          >
-            About
-          </Link>
-          <Link
-            className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
-            to="/contact"
-            onClick={() => setOpen(!isOpen)}
-          >
-            Contact
-          </Link>
+        <div className="flex px-8 flex-col justify-center h-full">
+          {links.map((link) => {
+            return (
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                key={link.linkName}
+                className="w-fit"
+              >
+                <Link
+                  className="text-[60px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
+                  to={link.url}
+                  onClick={() => setOpen(!isOpen)}
+                >
+                  {link.linkName}
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.nav>
     </AnimatePresence>
@@ -77,12 +86,12 @@ function Header({ location, setMagnetActive, magnetActive }) {
   return (
     <header className="z-50	 p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">
       <motion.div
-        className="z-10 w-full bg-white"
+        className="z-10 w-full"
         initial="initial"
         animate="enter"
         exit="exit"
       >
-        <ul className="flex flex-wrap justify-between items-center py-2 mx-8 border-b-[1px] border-black fixed top-0 left-0 right-0">
+        <ul className="flex flex-wrap justify-between items-center py-2 mx-8 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
           <li className="overflow-hidden w-[203px]">
             <Link partiallyActive={true} activeClassName="opacity-100" to="/">
               <AnimatePresence exitBeforeEnter>
@@ -125,6 +134,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
                     width="56px"
                     height="56px"
+                    magnetActive={magnetActive}
                   />
 
                   {magnetActive ? (
@@ -140,7 +150,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
 
           <li className="w-[203px] flex justify-end">
             <Link
-              className="text-xl md:text-xl pr-px text-dark font-normal font-display"
+              className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display"
               partiallyActive={true}
               activeClassName="opacity-100"
               to="/"

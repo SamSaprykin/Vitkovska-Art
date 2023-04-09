@@ -91,7 +91,7 @@ const HomeServices = () => {
   const Line2 = "My name is Ekaterina";
   const Line3 = "and I`m Digital artist";
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white mx-8">
+    <div className="relative min-h-screen overflow-hidden mx-8">
       <Container>
         <Flex alignTop>
           <About>
@@ -100,7 +100,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+              className="text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
             >
               {Line1.split("").map((char, index) => {
                 return (
@@ -115,7 +115,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[45px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+              className="text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
             >
               {Line2.split("").map((char, index) => {
                 return (
@@ -130,7 +130,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[45px] mb-[55px] text-dark tracking-wide font-[500] font-sans font-normal  max-w-[454px] "
+              className="text-[52px] mb-[55px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
             >
               {Line3.split("").map((char, index) => {
                 return (
@@ -157,27 +157,19 @@ const HomeServices = () => {
                 hidden: { opacity: 0, y: 72 },
               }}
             >
-              <p className="text-[20px] text-offblack tracking-wide font-light font-display  max-w-[719px] leading-[1.2]">
-                Fantasy art is a genre of art that depicts magical or other
-                supernatural themes, ideas, creatures or settings. While there
-                is some overlap with science fiction, horror and other
-                speculative fiction art, there are unique elements not generally
-                found in other forms of speculative fiction art. Depictions of
-                ancient myths and legends, as well as depictions of modern day
-                fantasy in the form of divine interventions and other magical or
-                supernatural forces, are very common elements, and help
-                distinguish fantasy art from other forms. Dragons, wizards,
-                fairies and other fantastical and mythical creatures are common
-                features in fantasy art. <br /> <br />
-                Fantasy art is strongly linked to fantasy fiction. Indeed
-                fantasy art pieces are often intended to represent specific
-                characters or scenes from works of fantasy literature. Such
-                works created by amateur artists may be called fanart.
+              <p className="text-[26px] text-slate-200 tracking-wide font-light font-display  max-w-[719px] leading-[1.2]">
+                Fantasy art is a genre that allows the imagination to soar. It
+                often features mythical creatures, magical landscapes, and epic
+                battles. From dragons and unicorns to wizards and warriors,
+                fantasy art can transport us to incredible worlds filled with
+                wonder and adventure. Whether created through painting (using
+                digital techniques) fantasy art can inspire us to dream big and
+                believe in the impossible.
               </p>
             </motion.div>
           </About>
           <Services>
-            <h3 className="text-[48px] leading-extratight font-light tracking-wide font-display mb-[32px]">
+            <h3 className="text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
               Services
             </h3>
             {accordionIds.map((details, index) => (
@@ -206,14 +198,16 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         onClick={() => setExpanded(isOpen ? false : details.id)}
         onHoverStart={() => setHovered(!hovered)}
         onHoverEnd={() => setHovered(!hovered)}
-        className="flex items-center text-2xl h-[32px] mb-2 font-display text-dark tracking-wide"
+        className="flex items-center text-2xl h-[32px] mb-2 font-display text-slate-100 tracking-wide"
       >
         <AccordionIcon>
           <motion.span
+            className="bg-slate-100"
             animate={{ rotate: isOpen || hovered ? 0 : 45, x: 3 }}
             transition={{ duration: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
           ></motion.span>
           <motion.span
+            className="bg-slate-100"
             animate={{ rotate: isOpen || hovered ? 0 : -45, x: -3 }}
             transition={{ duration: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
           ></motion.span>
@@ -227,7 +221,7 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         className="text-base mb-2 ml-10 text-dark font-light font-display relative overflow-hidden"
       >
         {details.results.map((result, index) => (
-          <span className="block" key={index}>
+          <span className="block text-slate-100" key={index}>
             {result}
           </span>
         ))}
@@ -297,7 +291,7 @@ const AccordionIcon = styled.div`
   span {
     width: 16px;
     height: 3px;
-    background: #202020;
+
     transition: all 0.1s ease-in-out;
   }
 `;

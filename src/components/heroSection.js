@@ -87,9 +87,9 @@ const Line2 = "Art";
 
 function Hero({ siteTitle, location }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white mx-8">
+    <div className="relative min-h-screen overflow-hidden mx-8">
       <motion.h2
-        className="text-[140px] flex overflow-hidden pr-px text-white font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
+        className="text-[140px] flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
         variants={sentence}
         initial="hidden"
         animate="visible"
@@ -103,7 +103,7 @@ function Hero({ siteTitle, location }) {
         })}
       </motion.h2>
       <motion.h2
-        className="text-[240px] flex overflow-hidden pr-px text-white font-normal font-sans relative z-10 leading-tight mix-blend-difference"
+        className="text-[240px] flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight mix-blend-difference"
         variants={sentenceArt}
         initial="hidden"
         animate="visible"
@@ -116,7 +116,7 @@ function Hero({ siteTitle, location }) {
           );
         })}
       </motion.h2>
-      <div className="bg-white flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px]">
+      <div className="flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px]">
         <ScrollDown />
       </div>
       <div className="absolute right-0 top-0">

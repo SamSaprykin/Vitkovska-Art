@@ -6,9 +6,10 @@ const MenuButton = ({
   width = 24,
   height = 24,
   strokeWidth = 1,
-  color = "#000",
+  color = "white",
   transition = null,
   lineProps = null,
+  magnetActive,
   ...props
 }) => {
   const variant = isOpen ? "opened" : "closed";
@@ -41,7 +42,7 @@ const MenuButton = ({
     },
   };
   lineProps = {
-    stroke: color,
+    stroke: magnetActive ? "#222" : "white",
     strokeWidth,
     vectorEffect: "non-scaling-stroke",
     initial: "closed",
@@ -54,7 +55,7 @@ const MenuButton = ({
 
   return (
     <div
-      className="rounded-[100%] bg-gray-50 flex justify-center items-center"
+      className="rounded-[100%] flex justify-center items-center"
       style={{ width, height }}
     >
       <motion.svg
