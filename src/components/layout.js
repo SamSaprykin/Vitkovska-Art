@@ -1,56 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import {
-  motion,
-  AnimatePresence,
-  useSpring,
-  useMotionValue,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "./header";
-
-const Cursor = (props) => {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = {
-    damping: 35,
-    stiffness: 700,
-    mass: 1,
-  };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
-  React.useEffect(() => {
-    const moveCursor = (e) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, []);
-
-  return (
-    <motion.div
-      style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
-      }}
-      className="fixed z-[99999] w-0 h-0 bg-red-500"
-    >
-      {!props.hideCursor === true ? (
-        <motion.div
-          layoutId="cursor"
-          className={`absolute w-4 h-4 -top-2 -left-2 bg-[#e78831] pointer-events-none rounded-full`}
-        ></motion.div>
-      ) : null}
-    </motion.div>
-  );
-};
+import CursorContext from "../context/CursorContext";
+import Cursor from "./cursor";
 
 const duration = 0.35;
 
@@ -86,9 +40,9 @@ const Layout = ({ children, location }) => {
   `);
 
   const [magnetActive, setMagnetActive] = useState(false);
-
+  const [cursorType, setCursorType] = useState("default");
   return (
-    <>
+    <CursorContext.Provider value={{ cursorType, setCursorType }}>
       <Cursor hideCursor={magnetActive} />
       <Header
         siteTitle={data.site.siteMetadata.title}
@@ -109,7 +63,7 @@ const Layout = ({ children, location }) => {
           </motion.main>
         </AnimatePresence>
       </div>
-    </>
+    </CursorContext.Provider>
   );
 };
 

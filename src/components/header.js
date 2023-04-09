@@ -1,9 +1,10 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuButton } from "./menuButton";
+import CursorContext from "../context/CursorContext";
 
 const revealInOut = {
   initial: { y: "-100%", opacity: 0 },
@@ -82,7 +83,15 @@ const Menu = ({ isOpen, setOpen }) => {
 
 function Header({ location, setMagnetActive, magnetActive }) {
   const [isOpen, setOpen] = useState(false);
+  const { setCursorType } = useContext(CursorContext);
 
+  const handleMouseEnter = () => {
+    setCursorType("hover-link");
+  };
+
+  const handleMouseLeave = () => {
+    setCursorType("default");
+  };
   return (
     <header className="z-50	 p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">
       <motion.div
@@ -150,10 +159,12 @@ function Header({ location, setMagnetActive, magnetActive }) {
 
           <li className="w-[203px] flex justify-end">
             <Link
-              className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display"
+              className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
               partiallyActive={true}
               activeClassName="opacity-100"
               to="/"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               Hello@vitkovskaya.com
             </Link>
