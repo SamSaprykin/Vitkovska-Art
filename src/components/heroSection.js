@@ -1,7 +1,6 @@
-import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
 import ScrollDown from "./scrollDown";
 
@@ -119,8 +118,16 @@ function Hero({ siteTitle, location }) {
       <div className="flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px]">
         <ScrollDown />
       </div>
-      <div className="absolute right-0 top-0">
-        <motion.div variants={revealInOut}>
+      <motion.div
+        className="absolute right-0 top-0"
+        whileHover={{
+          scale: 1.1,
+          rotateX: 10,
+          rotateY: 10,
+          perspective: "1000px",
+        }}
+      >
+        <motion.div variants={revealInOut} transition={{ duration: 0.5 }}>
           <StaticImage
             src="../images/hero-image.png"
             alt="hero image"
@@ -130,7 +137,7 @@ function Hero({ siteTitle, location }) {
             height={660}
           />
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 }

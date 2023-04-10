@@ -39,7 +39,7 @@ const links = [
   },
 ];
 
-const Menu = ({ isOpen, setOpen }) => {
+const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       <motion.nav
@@ -69,6 +69,8 @@ const Menu = ({ isOpen, setOpen }) => {
                   className="text-[60px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
                   to={link.url}
                   onClick={() => setOpen(!isOpen)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   {link.linkName}
                 </Link>
@@ -171,7 +173,12 @@ function Header({ location, setMagnetActive, magnetActive }) {
           </li>
         </ul>
       </motion.div>
-      <Menu isOpen={isOpen} setOpen={setOpen} />
+      <Menu
+        isOpen={isOpen}
+        setOpen={setOpen}
+        handleMouseEnter={handleMouseEnter}
+        handleMouseLeave={handleMouseLeave}
+      />
     </header>
   );
 }

@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import CursorContext from "../context/CursorContext";
 
 const Cursor = (props) => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const { cursorType, hoverElement, setCursorType } = useContext(CursorContext);
-  const [hovering, setHovering] = useState(false);
+  const { cursorType } = useContext(CursorContext);
+
   const springConfig = {
     damping: 35,
     stiffness: 700,
@@ -28,16 +28,17 @@ const Cursor = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (hoverElement) {
-      setCursorType("hover");
-    } else {
-      setCursorType("default");
+  const getClassName = () => {
+    switch (cursorType) {
+      case "hover-link":
+        return "w-10 h-10 rounded-full border-solid border-[#e78831] border-2";
+      case "completed":
+        return "bg-green-500 w-4 h-4 rounded-full";
+      default:
+        return "bg-[#e78831] w-4 h-4 rounded-full";
     }
-  }, [hoverElement]);
-  const defaultCursorClassess = "bg-[#e78831] w-4 h-4 rounded-full";
-  const hoverCursorClasses =
-    "w-10 h-10 rounded-full border-solid border-[#e78831] border-2";
+  };
+
   return (
     <motion.div
       style={{
@@ -46,16 +47,21 @@ const Cursor = (props) => {
       }}
       className="fixed z-[99999] w-0 h-0"
     >
-      {!props.hideCursor === true ? (
+      {cursorType === "hover-image" ? (
         <motion.div
           layoutId="cursor"
-          className={`absolute  -top-2 -left-2 pointer-events-none rounded-full ${
-            cursorType === "default"
-              ? defaultCursorClassess
-              : hoverCursorClasses
-          } ${hovering ? "hovering" : ""}`}
+          className={`absolute w-24 h-24 bg-[#e78831] -top-12 -left-12 pointer-events-none rounded-full flex justify-center items-center p-2`}
+        >
+          <span className="text-xl md:text-xl pr-px text-slate-100 font-bold tracking-widest font-display hover:cursor-none text-center">
+            Click Me
+          </span>
+        </motion.div>
+      ) : (
+        <motion.div
+          layoutId="cursor"
+          className={`absolute  -top-2 -left-2 pointer-events-none rounded-full ${getClassName()} `}
         ></motion.div>
-      ) : null}
+      )}
     </motion.div>
   );
 };

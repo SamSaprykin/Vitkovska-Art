@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // Styled Components
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
+import CursorContext from "../context/CursorContext";
 
 const accordionIds = [
   {
@@ -190,7 +191,15 @@ const HomeServices = () => {
 const Accordion = ({ details, expanded, setExpanded }) => {
   const isOpen = details.id === expanded;
   const [hovered, setHovered] = useState(false);
+  const { setCursorType } = useContext(CursorContext);
 
+  const handleMouseEnter = () => {
+    setCursorType("hover-link");
+  };
+
+  const handleMouseLeave = () => {
+    setCursorType("default");
+  };
   return (
     <>
       <motion.div
@@ -198,6 +207,8 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         onClick={() => setExpanded(isOpen ? false : details.id)}
         onHoverStart={() => setHovered(!hovered)}
         onHoverEnd={() => setHovered(!hovered)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className="flex items-center text-2xl h-[32px] mb-2 font-display text-slate-100 tracking-wide"
       >
         <AccordionIcon>
