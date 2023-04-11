@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
 import SEO from "../components/seo";
-import Header from "../components/header";
+
 import { revealInOut, fade } from "../helpers/transitionHelper";
 import CursorContext from "../context/CursorContext";
 
@@ -28,17 +28,6 @@ const AboutPage = () => {
   return (
     <div className="pb-16" onMouseEnter={handleMouseDefault}>
       <SEO title="About" />
-
-      <motion.div
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        className="relative z-20"
-      >
-        <motion.div variants={fade}>
-          <Header color="text-blue-light" aboutActiveOverride />
-        </motion.div>
-      </motion.div>
 
       <motion.section
         initial="initial"

@@ -6,7 +6,6 @@ const MenuButton = ({
   width = 24,
   height = 24,
   strokeWidth = 1,
-  color = "white",
   transition = null,
   lineProps = null,
   magnetActive,
