@@ -12,7 +12,9 @@ h3 {
 a {
   @apply text-blue-600;
 }
-
+html {
+  background-color: rgb(19, 20, 26);
+}
 body {
   overscroll-behavior: none;
   -ms-overflow-style: none;
@@ -20,7 +22,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor:none
+  cursor:none;
+  background-color: rgb(19, 20, 26);
 }
 
 
