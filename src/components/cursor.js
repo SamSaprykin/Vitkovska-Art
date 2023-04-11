@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import CursorContext from "../context/CursorContext";
 
-const Cursor = (props) => {
+const Cursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const { cursorType } = useContext(CursorContext);

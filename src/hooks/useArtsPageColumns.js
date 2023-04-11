@@ -10,7 +10,7 @@ const useArtsColumns = () => {
             columnName
             art {
               artImage {
-                gatsbyImageData(layout: CONSTRAINED, formats: WEBP)
+                gatsbyImageData(layout: CONSTRAINED, formats: WEBP, width: 1200)
                 filename
               }
             }

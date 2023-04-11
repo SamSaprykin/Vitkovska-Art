@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
 import ScrollDown from "./scrollDown";
+import CursorContext from "../context/CursorContext";
 
 const revealInOut = {
   initial: { x: "100%", opacity: 0 },
@@ -85,8 +86,15 @@ const Line1 = "Vitkovskaya";
 const Line2 = "Art";
 
 function Hero({ siteTitle, location }) {
+  const { setCursorType } = useContext(CursorContext);
+  const handleMouseEnter = () => {
+    setCursorType("default");
+  };
   return (
-    <div className="relative min-h-screen overflow-hidden mx-8">
+    <div
+      className="relative min-h-screen overflow-hidden mx-8"
+      onMouseEnter={handleMouseEnter}
+    >
       <motion.h2
         className="text-[140px] flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
         variants={sentence}

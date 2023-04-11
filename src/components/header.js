@@ -66,7 +66,7 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
                 className="w-fit"
               >
                 <Link
-                  className="text-[60px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
+                  className="text-6xl text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
                   to={link.url}
                   onClick={() => setOpen(!isOpen)}
                   onMouseEnter={handleMouseEnter}
@@ -160,7 +160,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
           </li>
 
           <li className="w-[203px] flex justify-end">
-            <Link
+            <a
               className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
               partiallyActive={true}
               activeClassName="opacity-100"
@@ -169,7 +169,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
               onMouseLeave={handleMouseLeave}
             >
               Hello@vitkovskaya.com
-            </Link>
+            </a>
           </li>
         </ul>
       </motion.div>

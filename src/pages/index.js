@@ -1,4 +1,11 @@
-import React, { useRef, useState, useLayoutEffect, useCallback } from "react";
+import React, {
+  useRef,
+  useState,
+  useLayoutEffect,
+  useCallback,
+  useEffect,
+  useContext,
+} from "react";
 import ResizeObserver from "resize-observer-polyfill";
 import {
   motion,
@@ -6,7 +13,7 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-
+import CursorContext from "../context/CursorContext";
 import Hero from "../components/heroSection";
 import HomeServices from "../components/homeServices";
 
@@ -15,7 +22,7 @@ const IndexPage = ({ location }) => {
   const ghostRef = useRef(null);
   const [scrollRange, setScrollRange] = useState(0);
   const [viewportW, setViewportW] = useState(0);
-
+  const { setCursorType } = useContext(CursorContext);
   useLayoutEffect(() => {
     scrollRef && setScrollRange(scrollRef.current.scrollWidth);
   }, [scrollRef]);
@@ -41,6 +48,9 @@ const IndexPage = ({ location }) => {
   const physics = { damping: 15, mass: 0.27, stiffness: 55 };
   const spring = useSpring(transform, physics);
 
+  useEffect(() => {
+    setCursorType("default");
+  }, [setCursorType]);
   return (
     <>
       <div className="fixed inset-x-0	will-change-transform">
