@@ -14,8 +14,10 @@ import {
   useSpring,
 } from "framer-motion";
 import CursorContext from "../context/CursorContext";
+
 import Hero from "../components/heroSection";
 import HomeServices from "../components/homeServices";
+import CategoryServices from "../components/categoryServices";
 
 const IndexPage = ({ location }) => {
   const scrollRef = useRef(null);
@@ -65,6 +67,9 @@ const IndexPage = ({ location }) => {
             </div>
             <div className="w-screen flex">
               <HomeServices />
+            </div>
+            <div className="w-screen flex">
+              <CategoryServices />
             </div>
           </div>
         </motion.section>

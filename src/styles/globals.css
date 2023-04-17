@@ -24,6 +24,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   cursor:none;
   background-color: rgb(19, 20, 26);
+  overflow-x: hidden;
 }
 
 
