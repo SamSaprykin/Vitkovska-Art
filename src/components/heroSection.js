@@ -83,6 +83,7 @@ const letterArt = {
 const Line1 = "Vitkovskaya";
 const Line2 = "Art";
 const Line3 = "freelance digital artist";
+
 function Hero({ siteTitle, location }) {
   const { setCursorType } = useContext(CursorContext);
   const handleMouseEnter = () => {
@@ -90,11 +91,11 @@ function Hero({ siteTitle, location }) {
   };
   return (
     <div
-      className="relative min-h-screen overflow-hidden mx-8"
+      className="relative lg:min-h-screen overflow-hidden lg:mx-8 w-full mb-24 lg:mb-0"
       onMouseEnter={handleMouseEnter}
     >
       <motion.h2
-        className="text-[120px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
+        className="md:text-[92px] lg:text-[120px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
         variants={sentence}
         initial="hidden"
         animate="visible"
@@ -108,7 +109,7 @@ function Hero({ siteTitle, location }) {
         })}
       </motion.h2>
       <motion.h2
-        className="text-[180px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight mix-blend-difference"
+        className="md:text-[112px] text-[180px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight mix-blend-difference"
         variants={sentenceArt}
         initial="hidden"
         animate="visible"
@@ -121,9 +122,9 @@ function Hero({ siteTitle, location }) {
           );
         })}
       </motion.h2>
-      <div className="h-[70px] mt-8 overflow-hidden">
+      <div className="md:h-[50px] lg:h-[70px] md:mt-2 lg:mt-8 overflow-hidden">
         <motion.h5
-          className="text-slate-100 italic font-serif text-5xl"
+          className="text-slate-100 italic font-serif md:text-3xl lg:text-5xl relative z-10 leading-tight mix-blend-difference"
           variants={sentencPosition}
           initial="hidden"
           animate="visible"
@@ -132,15 +133,15 @@ function Hero({ siteTitle, location }) {
         </motion.h5>
       </div>
 
-      <div className="flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px]">
+      <div className="flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px] hidden lg:block">
         <ScrollDown />
       </div>
-      <div className="absolute right-0 top-0">
+      <div className="absolute right-0 lg:right-0 top-0 w-[360px] lg:w-[600px] overflow-hidden">
         <StaticImage
           src="../images/hero-image.png"
           alt="hero image"
           placeholder="tracedSVG"
-          layout="fixed"
+          layout="CONSTRAINED"
           width={600}
           height={660}
         />

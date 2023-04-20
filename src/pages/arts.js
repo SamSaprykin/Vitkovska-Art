@@ -85,7 +85,7 @@ const StickySection = ({ setCursorType }) => {
     setCursorType("default");
   };
   return (
-    <section className="h-96 text-white py-16 -mt-48 z-10 relative bg-bgMain">
+    <section className="-mx-4 h-96 text-white py-16 -mt-48 z-10 relative bg-bgMain">
       <motion.div
         initial="initial"
         animate="enter"
@@ -125,7 +125,7 @@ const ArtWrapper = ({
         };
         return (
           <div
-            className="my-8"
+            className="my-2 md:my-4 lg:my-8"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             key={artItem.filename}
@@ -169,7 +169,7 @@ const ArtsPage = () => {
             case "Left Column":
               return (
                 <motion.div
-                  className="w-[30%] flex flex-col items-center justify-items-center transform side-column px-4"
+                  className="hidden w-[30%] md:flex flex-col items-center justify-items-center transform side-column px-1 md:px-2 lg:px-4"
                   style={{ y: x1 }}
                 >
                   <ArtWrapper
@@ -184,7 +184,7 @@ const ArtsPage = () => {
             case "Center Column":
               return (
                 <motion.div
-                  className="w-[40%] flex flex-col center-column items-center justify-items-center px-4"
+                  className="w-[64%] md:w-[40%] flex flex-col center-column items-center justify-items-center px-1 md:px-2 lg:px-4"
                   style={{ y: x2 }}
                 >
                   <ArtWrapper
@@ -199,7 +199,7 @@ const ArtsPage = () => {
             case "Right Column":
               return (
                 <motion.div
-                  className="w-[30%] flex flex-col items-center justify-items-center px-4"
+                  className="w-[36%] md:w-[30%] flex flex-col items-center justify-items-center px-1 md:px-2 lg:px-4"
                   style={{ y: x3 }}
                 >
                   <ArtWrapper

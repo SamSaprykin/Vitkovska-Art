@@ -95,14 +95,14 @@ function Header({ location, setMagnetActive, magnetActive }) {
     setCursorType("default");
   };
   return (
-    <header className="z-50	 p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">
+    <header className="max-w-full z-50	p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">
       <motion.div
         className="z-10 w-full"
         initial="initial"
         animate="enter"
         exit="exit"
       >
-        <ul className="flex flex-wrap justify-between items-center py-2 mx-8 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
+        <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-2 md:mx-0 lg:mx-8 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
           <li className="overflow-hidden w-[68px] hover:cursor-none">
             <Link
               partiallyActive={true}
@@ -128,7 +128,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
               </AnimatePresence>
             </Link>
           </li>
-          <li>
+          <li className="absolute left-[50%] translate-x-[-50%]">
             <AnimatePresence exitBeforeEnter>
               <motion.div
                 variants={revealInOut}
@@ -164,7 +164,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
             </AnimatePresence>
           </li>
 
-          <li className="w-[203px] flex justify-end">
+          <li className="flex justify-end">
             <a
               className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
               partiallyActive={true}

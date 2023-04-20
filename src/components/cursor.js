@@ -50,7 +50,7 @@ const Cursor = () => {
       {cursorType === "hover-image" ? (
         <motion.div
           layoutId="cursor"
-          className={`absolute w-24 h-24 bg-[#e78831] -top-12 -left-12 pointer-events-none rounded-full flex justify-center items-center p-2`}
+          className={`absolute w-24 h-24 bg-[#e78831] -top-12 -left-12 pointer-events-none rounded-full flex justify-center items-center p-2 mix-blend-difference`}
         >
           <span className="text-xl md:text-xl pr-px text-slate-100 font-bold tracking-widest font-display hover:cursor-none text-center">
             Show more

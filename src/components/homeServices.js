@@ -92,16 +92,16 @@ const HomeServices = () => {
   const Line2 = "My name is Ekaterina";
   const Line3 = "and I`m Digital artist";
   return (
-    <div className="relative min-h-screen overflow-hidden mx-8">
+    <div className="relative lg:min-h-screen overflow-hidden lg:mx-8 w-full lg:pl-12">
       <Container>
-        <Flex alignTop>
+        <Flex alignTop spaceBetween>
           <About>
             <motion.h2
               variants={sentence}
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
+              className="md:text-[36px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
             >
               {Line1.split("").map((char, index) => {
                 return (
@@ -116,7 +116,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
+              className="md:text-[36px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal lg:max-w-[500px] "
             >
               {Line2.split("").map((char, index) => {
                 return (
@@ -131,7 +131,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="text-[52px] mb-[55px] text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[500px] "
+              className="md:text-[36px] lg:text-[52px] md:mb-6 lg:mb-[55px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
             >
               {Line3.split("").map((char, index) => {
                 return (
@@ -144,7 +144,7 @@ const HomeServices = () => {
             <motion.div
               animate={animation}
               initial="hidden"
-              className="relative min-h-screen overflow-hidden"
+              className="relative lg:min-h-screen overflow-hidden"
               variants={{
                 visible: {
                   opacity: 1,
@@ -158,7 +158,7 @@ const HomeServices = () => {
                 hidden: { opacity: 0, y: 72 },
               }}
             >
-              <p className="text-[26px] text-slate-200 tracking-wide font-light font-display  max-w-[719px] leading-[1.2]">
+              <p className="md:text-[20px] lg:text-[26px] text-slate-200 tracking-wide font-light font-display lg:max-w-[719px] leading-[1.2]">
                 Fantasy art is a genre that allows the imagination to soar. It
                 often features mythical creatures, magical landscapes, and epic
                 battles. From dragons and unicorns to wizards and warriors,
@@ -170,7 +170,7 @@ const HomeServices = () => {
             </motion.div>
           </About>
           <Services>
-            <h3 className="text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
+            <h3 className="md:text-[32px] lg:text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
               Services
             </h3>
             {accordionIds.map((details, index) => (
@@ -262,6 +262,7 @@ const Flex = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   ${(props) =>
     props.spaceBetween &&
     css`
@@ -286,9 +287,11 @@ const Flex = styled.div`
 
 const About = styled.div`
   width: 100%;
+  max-width: 55%;
 `;
 const Services = styled.div`
   width: 500px;
+  max-width: 35%;
   margin-top: 5vh;
 `;
 

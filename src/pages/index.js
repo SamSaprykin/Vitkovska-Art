@@ -58,13 +58,13 @@ const DesktopVariant = () => {
           className="relative h-screen w-max flex pb-20"
         >
           <div className="relative flex">
-            <div className="w-screen">
+            <div className="w-screen 2xl:max-w-screen-2xl">
               <Hero />
             </div>
-            <div className="w-screen flex">
+            <div className="w-screen flex 2xl:max-w-screen-xl">
               <HomeServices />
             </div>
-            <div className="w-screen flex">
+            <div className="w-screen flex 2xl:max-w-screen-2xl">
               <CategoryServices />
             </div>
           </div>
@@ -84,13 +84,13 @@ const MobileVariant = () => {
   return (
     <div className="inset-x-0	will-change-transform">
       <div className="relative flex-col">
-        <div className="w-screen">
+        <div className="md:w-full lg:w-screen flex">
           <Hero />
         </div>
-        <div className="w-screen flex">
+        <div className="md:w-full lg:w-screen flex">
           <HomeServices />
         </div>
-        <div className="w-screen flex">
+        <div className="md:w-full lg:w-screen flex">
           <CategoryServices />
         </div>
       </div>
