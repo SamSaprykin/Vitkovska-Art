@@ -62,7 +62,6 @@ const CategoryServices = () => {
       hovered: true,
       index,
     });
-    console.log(startHovering.hovered);
   };
 
   const handleMouseLeave = () => {

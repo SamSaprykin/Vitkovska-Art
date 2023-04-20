@@ -34,13 +34,11 @@ const dropIn = {
 const Modal = ({ handleClose, onClick, modalImage }) => {
   const { setCursorType } = useContext(CursorContext);
   const handleMouseEnter = () => {
-    console.log("hover-button");
     setCursorType("hover-image");
   };
 
   const handleMouseLeave = () => {
     setCursorType("default");
-    console.log("stop-button");
   };
   return (
     <motion.div
