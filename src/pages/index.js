@@ -13,18 +13,18 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import CursorContext from "../context/CursorContext";
 
 import Hero from "../components/heroSection";
 import HomeServices from "../components/homeServices";
 import CategoryServices from "../components/categoryServices";
 
-const IndexPage = ({ location }) => {
+const DesktopVariant = () => {
   const scrollRef = useRef(null);
   const ghostRef = useRef(null);
   const [scrollRange, setScrollRange] = useState(0);
   const [viewportW, setViewportW] = useState(0);
-  const { setCursorType } = useContext(CursorContext);
   useLayoutEffect(() => {
     scrollRef && setScrollRange(scrollRef.current.scrollWidth);
   }, [scrollRef]);
@@ -49,10 +49,6 @@ const IndexPage = ({ location }) => {
   );
   const physics = { damping: 15, mass: 0.27, stiffness: 55 };
   const spring = useSpring(transform, physics);
-
-  useEffect(() => {
-    setCursorType("default");
-  }, [setCursorType]);
   return (
     <>
       <div className="fixed inset-x-0	will-change-transform">
@@ -82,6 +78,34 @@ const IndexPage = ({ location }) => {
       />
     </>
   );
+};
+
+const MobileVariant = () => {
+  return (
+    <div className="inset-x-0	will-change-transform">
+      <div className="relative flex-col">
+        <div className="w-screen">
+          <Hero />
+        </div>
+        <div className="w-screen flex">
+          <HomeServices />
+        </div>
+        <div className="w-screen flex">
+          <CategoryServices />
+        </div>
+      </div>
+    </div>
+  );
+};
+const IndexPage = () => {
+  const { setCursorType } = useContext(CursorContext);
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+  useEffect(() => {
+    setCursorType("default");
+  }, [setCursorType]);
+
+  return <>{isDesktop ? <DesktopVariant /> : <MobileVariant />}</>;
 };
 
 export default IndexPage;
