@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import CursorContext from "../context/CursorContext";
 
@@ -6,7 +6,7 @@ const Cursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const { cursorType } = useContext(CursorContext);
-
+  const [angle, setAngle] = useState(0);
   const springConfig = {
     damping: 35,
     stiffness: 700,
@@ -19,6 +19,14 @@ const Cursor = () => {
     const moveCursor = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+      const newAngle =
+        (Math.atan2(
+          e.clientY - window.innerHeight / 3,
+          e.clientX - window.innerWidth / 3,
+        ) *
+          180) /
+        Math.PI;
+      setAngle(newAngle);
     };
 
     window.addEventListener("mousemove", moveCursor);
@@ -52,8 +60,11 @@ const Cursor = () => {
           layoutId="cursor"
           className={`absolute w-24 h-24 bg-[#e78831] -top-12 -left-12 pointer-events-none rounded-full flex justify-center items-center p-2`}
         >
-          <span className="text-xl md:text-xl pr-px text-slate-100 font-bold tracking-widest font-display hover:cursor-none text-center">
-            Click Me
+          <span
+            style={{ transform: `rotate(${angle}deg)` }}
+            className="text-xl md:text-xl pr-px text-slate-100 font-bold tracking-widest font-display hover:cursor-none text-center"
+          >
+            Show more
           </span>
         </motion.div>
       ) : (

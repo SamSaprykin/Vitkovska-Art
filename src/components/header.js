@@ -103,8 +103,12 @@ function Header({ location, setMagnetActive, magnetActive }) {
         exit="exit"
       >
         <ul className="flex flex-wrap justify-between items-center py-2 mx-8 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
-          <li className="overflow-hidden w-[203px]">
-            <Link partiallyActive={true} activeClassName="opacity-100" to="/">
+          <li className="overflow-hidden w-[68px] hover:cursor-none">
+            <Link
+              partiallyActive={true}
+              activeClassName="opacity-100 cursor-none hover:cursor-none"
+              to="/"
+            >
               <AnimatePresence exitBeforeEnter>
                 <motion.div
                   variants={revealInOut}
@@ -112,6 +116,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
                   initial="initial"
                   animate="enter"
                   exit="exit"
+                  className="hover:cursor-none"
                 >
                   <StaticImage
                     src="../images/logo.png"

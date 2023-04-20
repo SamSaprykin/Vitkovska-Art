@@ -50,13 +50,45 @@ const columnsList = [
 
 const CategoryServices = () => {
   // Default state, using number for our id. Which ever the number/id is in the state. That will be opened.
+  const { setCursorType } = useContext(CursorContext);
+  const [startHovering, setStartHovering] = useState({
+    hovered: false,
+    index: null,
+  });
 
+  const handleMouseEnter = (index) => {
+    setCursorType("hover-image");
+    setStartHovering({
+      hovered: true,
+      index,
+    });
+    console.log(startHovering.hovered);
+  };
+
+  const handleMouseLeave = () => {
+    setCursorType("default");
+    setStartHovering({
+      hovered: false,
+      index: null,
+    });
+  };
+
+  const handleMouseDefault = () => {
+    setCursorType("default");
+  };
+
+  useEffect(() => {
+    setCursorType("default");
+  }, [setCursorType]);
   return (
-    <div className="relative min-h-screen overflow-hidden mx-8 flex justify-end">
+    <div
+      className="relative min-h-screen overflow-hidden mr-8 flex justify-end"
+      onMouseEnter={handleMouseDefault}
+    >
       <Wrapper>
         <Container>
-          <Flex alignEnd>
-            {columnsList.map((column) => {
+          <Flex alignEnd justifyEnd>
+            {columnsList.map((column, index) => {
               return (
                 <ColumnServices
                   key={column.title}
@@ -64,12 +96,20 @@ const CategoryServices = () => {
                   heightColumn={column.heightColumn}
                   widthColumn={column.widthColumn}
                   className={`${column.backgroundColor} overflow-hidden pl-4`}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                  startHovering={startHovering}
+                  itemIndex={index}
                 >
                   <DescriptionWrapper>
                     <SmallDescription>{column.title}</SmallDescription>
-                    <h3 className="uppercase font-semibold font-sans text-[260px] tracking-wider mt-[22vh]">
+                    <CategoryName
+                      className="uppercase font-semibold font-sans text-[260px] tracking-wider mt-[22vh]"
+                      startHovering={startHovering}
+                      itemIndex={index}
+                    >
                       {column.title}
-                    </h3>
+                    </CategoryName>
                   </DescriptionWrapper>
                 </ColumnServices>
               );
@@ -98,9 +138,22 @@ const ColumnServices = styled.div`
   display: flex;
   background-color: ${(props) => props.bgColor};
   height: ${(props) => props.heightColumn};
-  width: ${(props) => props.widthColumn};
+  width: ${(props) =>
+    props.startHovering.hovered
+      ? props.startHovering.hovered &&
+        props.startHovering.index === props.itemIndex
+        ? "40%"
+        : "15%"
+      : props.widthColumn};
   align-items: flex-end;
   position: relative;
+  transition: all 0.5s ease-in-out;
+`;
+
+const CategoryName = styled.h3`
+  margin-left: ${(props) =>
+    props.startHovering.index === props.itemIndex ? "-15vw" : "0%"};
+  transition: all 0.6s ease-in-out;
 `;
 
 const SmallDescription = styled.span`
@@ -132,6 +185,11 @@ const Flex = styled.div`
     props.spaceBetween &&
     css`
       justify-content: space-between;
+    `};
+  ${(props) =>
+    props.justifyEnd &&
+    css`
+      justify-content: flex-end;
     `};
   ${(props) =>
     props.flexEnd &&
