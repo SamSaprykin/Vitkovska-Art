@@ -38,8 +38,8 @@ const links = [
     url: "/contact",
   },
   {
-    linkName: "Comissions",
-    url: "/comissions",
+    linkName: "Commissions Info",
+    url: "/commissions-info",
   },
 ];
 

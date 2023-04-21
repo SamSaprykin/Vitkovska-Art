@@ -4,7 +4,7 @@ import SEO from "../components/seo";
 
 import CursorContext from "../context/CursorContext";
 
-const ComissionsPage = () => {
+const CommissionsPage = () => {
   const { setCursorType } = useContext(CursorContext);
 
   const handleMouseEnter = (imageName) => {
@@ -65,4 +65,4 @@ const ComissionsPage = () => {
   );
 };
 
-export default ComissionsPage;
+export default CommissionsPage;

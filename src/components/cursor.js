@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 import CursorContext from "../context/CursorContext";
-import CommissionsImage from "./comissionsImages";
+import CommissionsImage from "./commissionsImages";
 
 const Cursor = () => {
   const cursorX = useMotionValue(-100);
