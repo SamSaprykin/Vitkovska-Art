@@ -73,7 +73,10 @@ const CategoryServices = () => {
   });
 
   const handleMouseEnter = (index) => {
-    setCursorType("hover-image");
+    setCursorType({
+      type: "hover-image",
+      imageName: null,
+    });
     setStartHovering({
       hovered: true,
       index,
@@ -81,7 +84,10 @@ const CategoryServices = () => {
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
     setStartHovering({
       hovered: false,
       index: null,
@@ -89,19 +95,31 @@ const CategoryServices = () => {
   };
 
   const handleMouseEnterLink = () => {
-    setCursorType("hover-link");
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
   };
 
   const handleMouseLeaveLink = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
 
   const handleMouseDefault = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
 
   useEffect(() => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   }, [setCursorType]);
 
   const containerVariants = {

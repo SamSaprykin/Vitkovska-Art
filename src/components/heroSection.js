@@ -84,10 +84,13 @@ const Line1 = "Vitkovskaya";
 const Line2 = "Art";
 const Line3 = "freelance digital artist";
 
-function Hero({ siteTitle, location }) {
+function Hero() {
   const { setCursorType } = useContext(CursorContext);
   const handleMouseEnter = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
   return (
     <div

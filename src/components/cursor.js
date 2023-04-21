@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
+
 import CursorContext from "../context/CursorContext";
+import CommissionsImage from "./comissionsImages";
 
 const Cursor = () => {
   const cursorX = useMotionValue(-100);
@@ -29,7 +31,7 @@ const Cursor = () => {
   }, []);
 
   const getClassName = () => {
-    switch (cursorType) {
+    switch (cursorType.type) {
       case "hover-link":
         return "w-10 h-10 rounded-full border-solid border-[#e78831] border-2";
       case "completed":
@@ -47,7 +49,7 @@ const Cursor = () => {
       }}
       className="fixed z-[99999] w-0 h-0"
     >
-      {cursorType === "hover-image" ? (
+      {cursorType.type === "hover-image" ? (
         <motion.div
           layoutId="cursor"
           className={`absolute w-24 h-24 bg-[#e78831] -top-12 -left-12 pointer-events-none rounded-full flex justify-center items-center p-2 mix-blend-difference`}
@@ -56,6 +58,15 @@ const Cursor = () => {
             Show more
           </span>
         </motion.div>
+      ) : cursorType.type === "link-image" ? (
+        <div
+          className={`absolute w-48 h-48 -top-12 -left-12 pointer-events-none flex justify-center items-center mix-blend-difference`}
+        >
+          <CommissionsImage
+            commissionName={cursorType.imageName}
+            altText={cursorType.imageName}
+          />
+        </div>
       ) : (
         <motion.div
           layoutId="cursor"

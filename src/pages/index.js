@@ -102,7 +102,10 @@ const IndexPage = () => {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 
   useEffect(() => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   }, [setCursorType]);
 
   return <>{isDesktop ? <DesktopVariant /> : <MobileVariant />}</>;

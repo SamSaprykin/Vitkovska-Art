@@ -36,11 +36,17 @@ const dropIn = {
 const Modal = ({ handleClose, onClick, modalImage }) => {
   const { setCursorType } = useContext(CursorContext);
   const handleMouseEnter = () => {
-    setCursorType("hover-image");
+    setCursorType({
+      type: "hover-image",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
   return (
     <motion.div
@@ -80,11 +86,17 @@ const Modal = ({ handleClose, onClick, modalImage }) => {
 
 const StickySection = ({ setCursorType }) => {
   const handleMouseEnter = () => {
-    setCursorType("hover-link");
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
   return (
     <section className="-mx-4 h-96 text-white py-16 -mt-48 z-10 relative bg-bgMain">
@@ -173,11 +185,17 @@ const ArtsPage = () => {
   const ArtsPageColumns = useArtsColumns();
 
   const handleMouseEnter = () => {
-    setCursorType("hover-image");
+    setCursorType({
+      type: "hover-image",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
 
   const [modalOpen, setModalOpen] = useState(false);

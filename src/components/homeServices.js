@@ -194,11 +194,17 @@ const Accordion = ({ details, expanded, setExpanded }) => {
   const { setCursorType } = useContext(CursorContext);
 
   const handleMouseEnter = () => {
-    setCursorType("hover-link");
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
   return (
     <>

@@ -37,6 +37,10 @@ const links = [
     linkName: "Contact",
     url: "/contact",
   },
+  {
+    linkName: "Comissions",
+    url: "/comissions",
+  },
 ];
 
 const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
@@ -88,11 +92,17 @@ function Header({ location, setMagnetActive, magnetActive }) {
   const { setCursorType } = useContext(CursorContext);
 
   const handleMouseEnter = () => {
-    setCursorType("hover-link");
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
   return (
     <header className="max-w-full z-50	p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">

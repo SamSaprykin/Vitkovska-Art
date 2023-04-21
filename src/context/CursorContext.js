@@ -3,7 +3,10 @@ import React, { useState } from "react";
 const CursorContext = React.createContext();
 
 const CursorProvider = ({ children }) => {
-  const [cursorType, setCursorType] = useState("default");
+  const [cursorType, setCursorType] = useState({
+    type: "default",
+    imageName: null,
+  });
   const [hoverElement, setHoverElement] = useState(null);
 
   const values = {

@@ -40,7 +40,10 @@ const Layout = ({ children, location }) => {
   `);
 
   const [magnetActive, setMagnetActive] = useState(false);
-  const [cursorType, setCursorType] = useState("default");
+  const [cursorType, setCursorType] = useState({
+    type: "default",
+    imageName: null,
+  });
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>
       <Cursor hideCursor={magnetActive} />

@@ -11,19 +11,31 @@ const AboutPage = () => {
   const { setCursorType } = useContext(CursorContext);
 
   const handleMouseEnter = () => {
-    setCursorType("hover-link");
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
   };
 
   const handleMouseLeave = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
 
   const handleMouseDefault = () => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   };
 
   useEffect(() => {
-    setCursorType("default");
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
   }, [setCursorType]);
   return (
     <div className="pb-16" onMouseEnter={handleMouseDefault}>
@@ -51,8 +63,9 @@ const AboutPage = () => {
               placeholder="tracedSVG"
               layout="fixed"
               width={600}
-              height={660}
+              height={760}
               className="!w-full overflow-hidden"
+              quality={100}
             />
           </motion.div>
 
@@ -60,7 +73,7 @@ const AboutPage = () => {
             variants={fade}
             className="content content--list w-11/12 md:w-6/12 xl:w-7/12 md:px-8"
           >
-            <h1 className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <h1 className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   I'm a{" "}
@@ -72,7 +85,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </h1>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   My primary tools are{" "}
@@ -84,7 +97,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   One of my favorite techniques is the kitbash technique, which
@@ -93,7 +106,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   By combining various 3D models and elements, I can create
@@ -106,7 +119,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   I should note that while I use a variety of digital tools and
@@ -116,7 +129,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-3xl	mb-4">
+            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   If you're looking for a freelance digital artist who can bring
@@ -160,7 +173,7 @@ const AboutPage = () => {
             onMouseLeave={handleMouseLeave}
             href={`mailto:vitkovskaya0592@gmail.com `}
             variants={fade}
-            className="text-[#e78831] block italic font-serif text-3xl md:text-4xl xl:text-5xl 3xl:text-6xl nav--active nav--active--large relative hover:text-slate-200 focus:text-slate-200 transition ease-in-out duration-300 hover:cursor-none"
+            className="text-[#e78831] block italic font-serif text-2xl md:text-4xl xl:text-5xl 3xl:text-6xl nav--active nav--active--large relative hover:text-slate-200 focus:text-slate-200 transition ease-in-out duration-300 hover:cursor-none"
           >
             Drop me a line!
           </motion.a>
