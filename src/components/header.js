@@ -7,7 +7,7 @@ import { MenuButton } from "./menuButton";
 import CursorContext from "../context/CursorContext";
 
 const revealInOut = {
-  initial: { y: "-100%", opacity: 0 },
+  initial: { y: "-100%", opacity: 0.2 },
   enter: {
     y: "0%",
     opacity: 1,
@@ -15,7 +15,7 @@ const revealInOut = {
   },
   exit: {
     y: "-100%",
-    opacity: 0,
+    opacity: 0.2,
     transition: { duration: 0.55, ease: [0.76, 0, 0.24, 1] },
   },
 };
@@ -163,19 +163,28 @@ function Header({ location, setMagnetActive, magnetActive }) {
               </motion.div>
             </AnimatePresence>
           </li>
-
-          <li className="flex justify-end">
-            <a
-              className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
-              partiallyActive={true}
-              activeClassName="opacity-100"
-              href={`mailto:vitkovskaya0592@gmail.com `}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              variants={revealInOut}
+              key={location?.pathname}
+              initial="initial"
+              animate="enter"
+              exit="exit"
             >
-              Hello@vitkovskaya.com
-            </a>
-          </li>
+              <li className="flex justify-end h-[68px] flex flex-col justify-center">
+                <a
+                  className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
+                  partiallyActive={true}
+                  activeClassName="opacity-100"
+                  href={`mailto:vitkovskaya0592@gmail.com `}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  Hello@vitkovskaya.com
+                </a>
+              </li>
+            </motion.div>
+          </AnimatePresence>
         </ul>
       </motion.div>
       <Menu

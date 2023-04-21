@@ -129,7 +129,7 @@ const IconsLibrary = ({ type, className }) => {
     </svg>
   ) : type === "instagram" ? (
     <svg
-      fill="#FFFFFF"
+      fill="#f1f5f9"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 50 50"
       width="32px"
@@ -139,7 +139,7 @@ const IconsLibrary = ({ type, className }) => {
     </svg>
   ) : type === "twitter" ? (
     <svg
-      fill="#FFFFFF"
+      fill="#f1f5f9"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 50 50"
       width="32px"
@@ -160,15 +160,15 @@ const IconsLibrary = ({ type, className }) => {
         id="artstation_art_station_design"
       >
         <path
-          fill="#FFFFFF"
+          fill="#f1f5f9"
           d="M28.63,20.66,20.87,6.49A2.94,2.94,0,0,0,18.32,5H13.81a1,1,0,0,0-.87.49,1,1,0,0,0,0,1l11.74,21a1,1,0,0,0,.87.51h0a1,1,0,0,0,.88-.51l2.21-4A3,3,0,0,0,28.63,20.66Zm-1.75,1.89L25.54,25,15.51,7h2.81a.93.93,0,0,1,.8.46l7.76,14.17A.94.94,0,0,1,26.88,22.55Z"
         />
         <path
-          fill="#FFFFFF"
+          fill="#f1f5f9"
           d="M21.5,26H8a.93.93,0,0,1-.79-.44L5.74,23H18.66a1,1,0,0,0,0-2H4a1,1,0,0,0-.86,1.51l2.37,4.07A3,3,0,0,0,8,28H21.5a1,1,0,0,0,0-2Z"
         />
         <path
-          fill="#FFFFFF"
+          fill="#f1f5f9"
           d="M6,19.67H16.9a1,1,0,0,0,.87-.49,1,1,0,0,0,0-1L12.39,8.71a1,1,0,0,0-.86-.5h0a1,1,0,0,0-.86.5L5.18,18.17a1,1,0,0,0,0,1A1,1,0,0,0,6,19.67Zm5.48-8.45,3.67,6.45H7.78Z"
         />
       </g>
