@@ -169,7 +169,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
               className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
               partiallyActive={true}
               activeClassName="opacity-100"
-              to="/"
+              href={`mailto:vitkovskaya0592@gmail.com `}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >

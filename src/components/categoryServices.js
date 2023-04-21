@@ -4,6 +4,22 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
 import CursorContext from "../context/CursorContext";
+import IconsLibrary from "./iconsLibrary";
+
+export const socialLinks = [
+  {
+    name: "instagram",
+    link: "https://www.instagram.com/vitkovskaya_art/",
+  },
+  {
+    name: "twitter",
+    link: "https://twitter.com/vitkovskaya_art",
+  },
+  {
+    name: "art-station",
+    link: "https://www.artstation.com/vitkovskaya",
+  },
+];
 
 const columnsList = [
   {
@@ -72,6 +88,14 @@ const CategoryServices = () => {
     });
   };
 
+  const handleMouseEnterLink = () => {
+    setCursorType("hover-link");
+  };
+
+  const handleMouseLeaveLink = () => {
+    setCursorType("default");
+  };
+
   const handleMouseDefault = () => {
     setCursorType("default");
   };
@@ -79,46 +103,137 @@ const CategoryServices = () => {
   useEffect(() => {
     setCursorType("default");
   }, [setCursorType]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  };
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   return (
     <div
       className="relative min-h-screen overflow-hidden mr-8 flex justify-end"
       onMouseEnter={handleMouseDefault}
+      ref={ref}
     >
       <Wrapper>
         <Container>
-          <Flex alignEnd justifyEnd>
+          <Flex
+            alignEnd
+            justifyEnd
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {columnsList.map((column, index) => {
               return (
-                <ColumnServices
-                  key={column.title}
-                  growDefault={column.growDefault}
-                  heightColumn={column.heightColumn}
-                  widthColumn={column.widthColumn}
-                  className={`${column.backgroundColor} overflow-hidden pl-4`}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
+                <Item
+                  key={index}
+                  index={index}
+                  column={column}
+                  handleMouseEnter={handleMouseEnter}
+                  handleMouseLeave={handleMouseLeave}
                   startHovering={startHovering}
-                  itemIndex={index}
-                >
-                  <DescriptionWrapper>
-                    <SmallDescription>{column.title}</SmallDescription>
-                    <CategoryName
-                      className="uppercase font-semibold font-sans text-[260px] tracking-wider mt-[22vh]"
-                      startHovering={startHovering}
-                      itemIndex={index}
-                    >
-                      {column.title}
-                    </CategoryName>
-                  </DescriptionWrapper>
-                </ColumnServices>
+                  inView={inView}
+                />
               );
             })}
           </Flex>
         </Container>
       </Wrapper>
+      <FollowSocial className="pt-32 flex items-center flex-col">
+        <h3 className="text-slate-100 italic font-serif md:text-3xl lg:text-4xl relative z-10 leading-tight mix-blend-difference">
+          Follow Me
+        </h3>
+        <div className="flex row justify-center w-full mt-8 items-center">
+          {socialLinks.map((social) => {
+            return (
+              <div key={social.name} className="mx-2">
+                <a
+                  href={social.link}
+                  className="hover:cursor-none"
+                  onMouseEnter={handleMouseEnterLink}
+                  onMouseLeave={handleMouseLeaveLink}
+                >
+                  <IconsLibrary type={social.name} />
+                </a>
+              </div>
+            );
+          })}
+        </div>
+        <h5 className="text-xl md:text-2xl pr-px text-slate-100 font-serif font-display hover:cursor-none mt-8">
+          Or
+        </h5>
+        <a
+          className="text-[#e78831] text-xl md:text-2xl pr-px text-slate-100 font-serif font-display hover:cursor-none mt-4 hover:text-slate-200 focus:text-slate-200 transition ease-in-out"
+          partiallyActive={true}
+          activeClassName="opacity-100"
+          href={`mailto:vitkovskaya0592@gmail.com `}
+          onMouseEnter={handleMouseEnterLink}
+          onMouseLeave={handleMouseLeaveLink}
+        >
+          Mail
+        </a>
+      </FollowSocial>
     </div>
   );
 };
+
+const Item = ({
+  column,
+  handleMouseEnter,
+  index,
+  handleMouseLeave,
+  startHovering,
+  inView,
+}) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        height: column.heightColumn,
+        transition: {
+          duration: 0.15 * (index + 0.05),
+          ease: [0.6, 0.05, -0.01, 0.9],
+          damping: 12,
+          stiffness: 200,
+        },
+      });
+    } else {
+      controls.start({ height: 0 });
+    }
+  }, [controls, inView]);
+  return (
+    <ColumnServices
+      key={column.title}
+      growDefault={column.growDefault}
+      heightColumn={column.heightColumn}
+      widthColumn={column.widthColumn}
+      className={`${column.backgroundColor} overflow-hidden pl-4`}
+      onMouseEnter={() => handleMouseEnter(index)}
+      onMouseLeave={handleMouseLeave}
+      startHovering={startHovering}
+      itemIndex={index}
+      initial={{ height: 0 }}
+      animate={controls}
+    >
+      <DescriptionWrapper>
+        <SmallDescription>{column.title}</SmallDescription>
+        <CategoryName
+          className="uppercase font-semibold font-sans text-[260px] tracking-wider mt-[22vh]"
+          startHovering={startHovering}
+          itemIndex={index}
+        >
+          {column.title}
+        </CategoryName>
+      </DescriptionWrapper>
+    </ColumnServices>
+  );
+};
+
+const FollowSocial = styled.div`
+  width: 300px;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -133,7 +248,7 @@ const DescriptionWrapper = styled.div`
   position: relative;
 `;
 
-const ColumnServices = styled.div`
+const ColumnServices = styled(motion.div)`
   display: flex;
   background-color: ${(props) => props.bgColor};
   height: ${(props) => props.heightColumn};
@@ -171,7 +286,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding-left: calc(var(--vh, 1vh) * 8.5185);
+  padding-left: calc(var(--vh, 1vh) * 2.5185);
   padding-right: calc(var(--vh, 1vh) * 6.8519);
 `;
 

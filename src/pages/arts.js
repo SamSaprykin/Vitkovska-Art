@@ -9,6 +9,8 @@ import {
 } from "framer-motion";
 import useArtsColumns from "../hooks/useArtsPageColumns";
 import CursorContext from "../context/CursorContext";
+import { socialLinks } from "../components/categoryServices";
+import IconsLibrary from "../components/iconsLibrary";
 
 const dropIn = {
   hidden: {
@@ -104,6 +106,28 @@ const StickySection = ({ setCursorType }) => {
           Drop me a line!
         </a>
       </motion.div>
+      <h5 className="text-center text-xl md:text-2xl pr-px text-slate-100 font-serif font-display hover:cursor-none mt-8">
+        Or
+      </h5>
+      <h3 className="text-center text-slate-100 italic font-serif md:text-2xl lg:text-3xl relative z-10 leading-tight mix-blend-difference">
+        Follow Me
+      </h3>
+      <div className="flex row justify-center w-full mt-8 items-center">
+        {socialLinks.map((social) => {
+          return (
+            <div key={social.name} className="mx-2">
+              <a
+                href={social.link}
+                className="hover:cursor-none"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseEnter}
+              >
+                <IconsLibrary type={social.name} />
+              </a>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };
