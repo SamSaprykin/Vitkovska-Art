@@ -105,14 +105,14 @@ function Header({ location, setMagnetActive, magnetActive }) {
     });
   };
   return (
-    <header className="max-w-full z-50	p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0">
+    <header className="max-w-full z-50	p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0 md:px-0 lg:px-8 bg-bgMain">
       <motion.div
         className="z-10 w-full"
         initial="initial"
         animate="enter"
         exit="exit"
       >
-        <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-2 md:mx-0 lg:mx-8 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
+        <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-2 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
           <li className="overflow-hidden w-[68px] hover:cursor-none">
             <Link
               partiallyActive={true}

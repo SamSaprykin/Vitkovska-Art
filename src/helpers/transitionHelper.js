@@ -35,3 +35,8 @@ export const revealInOutMini = {
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
   },
 };
+
+export const defaultTransition = {
+  duration: 1.25,
+  ease: [0.43, 0.13, 0.23, 0.96],
+};

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
+import { navigate } from "gatsby";
 import CursorContext from "../context/CursorContext";
 import IconsLibrary from "./iconsLibrary";
 
@@ -18,6 +19,10 @@ export const socialLinks = [
   {
     name: "art-station",
     link: "https://www.artstation.com/vitkovskaya",
+  },
+  {
+    name: "tiktok",
+    link: "https://www.tiktok.com/@vitkovskaya_art",
   },
 ];
 
@@ -171,6 +176,8 @@ const CategoryServices = () => {
                   className="hover:cursor-none"
                   onMouseEnter={handleMouseEnterLink}
                   onMouseLeave={handleMouseLeaveLink}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <IconsLibrary type={social.name} />
                 </a>
@@ -221,6 +228,10 @@ const Item = ({
       controls.start({ height: 0 });
     }
   }, [controls, inView]);
+
+  const navigateTo = () => {
+    navigate("/arts/architecture/");
+  };
   return (
     <ColumnServices
       key={column.title}
@@ -234,6 +245,7 @@ const Item = ({
       itemIndex={index}
       initial={{ height: 0 }}
       animate={controls}
+      onClick={navigateTo}
     >
       <DescriptionWrapper>
         <SmallDescription>{column.title}</SmallDescription>
