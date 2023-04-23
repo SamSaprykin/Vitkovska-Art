@@ -44,6 +44,8 @@ const Layout = ({ children, location }) => {
     type: "default",
     imageName: null,
   });
+
+  console.log(location.pathname);
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>
       <Cursor hideCursor={magnetActive} />
@@ -53,7 +55,7 @@ const Layout = ({ children, location }) => {
         setMagnetActive={setMagnetActive}
         magnetActive={magnetActive}
       />
-      <div className="pt-32 px-6 md:px-8 bg-bgMain">
+      <div className="pt-16 lg:pt-32 px-6 md:px-8 bg-bgMain">
         <AnimatePresence>
           <motion.main
             key={location.pathname}

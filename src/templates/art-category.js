@@ -85,6 +85,7 @@ export default function CategoryPage({ data }) {
         <GridContainer>
           <GridElements
             onMouseMove={gridParallax}
+            onTouchMove={gridParallax}
             ref={gridRef}
             transition={defaultTransition}
             style={{
@@ -108,14 +109,19 @@ export default function CategoryPage({ data }) {
 
 const Content = styled(motion.div)`
   position: relative;
+  max-width: 100%;
   width: 100vw;
-  height: calc(1vh * 100);
+  height: 100vh;
   overflow: hidden;
   content-visibility: auto;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   display: flex;
   justify-content: center;
   background-color: rgba(19, 20, 26);
+
+  @media (min-width: 1280px) {
+    margin-top: 30px;
+  }
 `;
 
 const GridContainer = styled.div`
@@ -123,10 +129,10 @@ const GridContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 2110px;
-  height: 1600px;
-  top: calc(((1vh * 100) - 1600px) / 2);
-  left: calc((100vw - 2110px) / 2);
+  width: 1170px;
+  height: 1016px;
+  top: calc(((var(--vh, 1vh) * 100) - 1016px) / 2);
+  left: calc((100vw - 1170px) / 2);
   content-visibility: auto;
 
   @media (min-width: 1280px) {
@@ -135,23 +141,53 @@ const GridContainer = styled.div`
     top: calc(((1vh * 100) - 1456px) / 2);
     left: calc((100vw - 1960px) / 2);
   }
+
+  @media (min-width: 1440px) {
+    width: 2110px;
+    height: 1600px;
+    top: calc(((1vh * 100) - 1600px) / 2);
+    left: calc((100vw - 2110px) / 2);
+  }
 `;
 
 const GridElements = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(5, 420px);
+  grid-template-columns: repeat(5, 234px);
+  padding: 25px 37.5px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(5, 320px);
+    padding: 64px 80px;
+  }
 
   @media (min-width: 1280px) {
     grid-template-columns: repeat(5, 392px);
     padding: 64px 92px;
   }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(5, 420px);
+    padding: 64px 92px;
+  }
 `;
 
 const Element = styled(motion.div)`
-  margin: 0px 5vw;
-  padding: 32px 46px;
-  width: 420px;
-  height: 400px;
+  padding: 25px 15px;
+  width: 234px;
+  height: 254px;
+
+  @media (min-width: 820px) {
+    width: 320px;
+    height: 304px;
+    padding: 32px 40px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 420px;
+    height: 400px;
+    padding: 32px 46px;
+    margin: 0px 2vw;
+  }
 
   img {
     width: 100%;

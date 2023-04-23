@@ -134,7 +134,7 @@ const CategoryServices = () => {
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   return (
     <div
-      className="relative min-h-screen overflow-hidden mr-8 flex justify-end"
+      className="relative lg:min-h-screen overflow-hidden mt-8 md:mt-16 lg:mt-0 mb-12 lg:mb-0 mr-0 lg:mr-8 flex-col lg:flex flex-start lg:justify-end"
       onMouseEnter={handleMouseDefault}
       ref={ref}
     >
@@ -163,7 +163,7 @@ const CategoryServices = () => {
           </Flex>
         </Container>
       </Wrapper>
-      <FollowSocial className="pt-32 flex items-center flex-col">
+      <FollowSocial className="pt-12 md:pt-32 flex items-center flex-col">
         <h3 className="text-slate-100 italic font-serif md:text-3xl lg:text-4xl relative z-10 leading-tight mix-blend-difference">
           Follow Me
         </h3>
@@ -238,7 +238,7 @@ const Item = ({
       growDefault={column.growDefault}
       heightColumn={column.heightColumn}
       widthColumn={column.widthColumn}
-      className={`${column.backgroundColor} overflow-hidden pl-4`}
+      className={`${column.backgroundColor} overflow-hidden pl-3 md:pl-4`}
       onMouseEnter={() => handleMouseEnter(index)}
       onMouseLeave={handleMouseLeave}
       startHovering={startHovering}
@@ -250,7 +250,7 @@ const Item = ({
       <DescriptionWrapper>
         <SmallDescription>{column.title}</SmallDescription>
         <CategoryName
-          className="uppercase font-semibold font-sans text-[260px] tracking-wider mt-[22vh]"
+          className="uppercase font-semibold font-sans text-[80px] md:text-[180px] lg:text-[260px] tracking-wider mt-[22vh]"
           startHovering={startHovering}
           itemIndex={index}
         >
@@ -262,7 +262,11 @@ const Item = ({
 };
 
 const FollowSocial = styled.div`
-  width: 300px;
+  width: 100%;
+
+  @media (min-width: 1280px) {
+    width: 300px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -270,12 +274,23 @@ const Wrapper = styled.div`
   align-items: flex-end;
   -webkit-box-pack: start;
   justify-content: flex-end;
-  width: calc(var(--vh, 1vh) * 140);
+  width: 100%;
+
+  @media (min-width: 1280px) {
+    width: calc(var(--vh, 1vh) * 140);
+  }
 `;
 
 const DescriptionWrapper = styled.div`
-  height: 70vh;
+  height: 38vh;
   position: relative;
+
+  @media (min-width: 820px) {
+    height: 47vh;
+  }
+  @media (min-width: 1280px) {
+    height: 70vh;
+  }
 `;
 
 const ColumnServices = styled(motion.div)`
@@ -296,18 +311,27 @@ const ColumnServices = styled(motion.div)`
 
 const CategoryName = styled.h3`
   margin-left: ${(props) =>
-    props.startHovering.index === props.itemIndex ? "-15vw" : "0%"};
+    props.startHovering.index === props.itemIndex ? "-18vw" : "0%"};
   transition: all 0.6s ease-in-out;
+
+  @media (min-width: 1280px) {
+    margin-left: ${(props) =>
+      props.startHovering.index === props.itemIndex ? "-15vw" : "0%"};
+  }
 `;
 
 const SmallDescription = styled.span`
   position: absolute;
   transform: rotate(90deg);
-  left: 20px;
+  left: 0px;
   top: 8vh;
   font-size: 16px;
   font-family: Helvetica Neue;
   transform-origin: 0% 100%;
+
+  @media (min-width: 820px) {
+    left: 20px;
+  }
 `;
 
 const Container = styled.div`
@@ -316,15 +340,18 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding-left: calc(var(--vh, 1vh) * 2.5185);
-  padding-right: calc(var(--vh, 1vh) * 6.8519);
+
+  @media (min-width: 1280px) {
+    padding-left: calc(var(--vh, 1vh) * 2.5185);
+    padding-right: calc(var(--vh, 1vh) * 6.8519);
+  }
 `;
 
 const Flex = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  height: calc(var(--vh, 1vh) * 84);
+  height: calc(var(--vh, 1vh) * 40);
   ${(props) =>
     props.spaceBetween &&
     css`
@@ -355,6 +382,13 @@ const Flex = styled.div`
     css`
       height: 0;
     `};
+
+  @media (min-width: 820px) {
+    height: calc(var(--vh, 1vh) * 56);
+  }
+  @media (min-width: 1280px) {
+    height: calc(var(--vh, 1vh) * 84);
+  }
 `;
 
 export default CategoryServices;

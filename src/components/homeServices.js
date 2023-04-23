@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
+import { useMediaQuery } from "react-responsive";
 import CursorContext from "../context/CursorContext";
 
 const accordionIds = [
@@ -46,9 +47,11 @@ const HomeServices = () => {
   // Default state, using number for our id. Which ever the number/id is in the state. That will be opened.
   const [expanded, setExpanded] = useState(0);
   const animation = useAnimation();
+  const isDesktop = useMediaQuery({ minWidth: 820 });
+  const rootMargin = isDesktop ? "-300px" : "0px";
   const [aboutRef, inView] = useInView({
     triggerOnce: false,
-    rootMargin: "-300px",
+    rootMargin,
   });
 
   useEffect(() => {
@@ -101,7 +104,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="md:text-[36px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
+              className="text-[28px] md:text-[36px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
             >
               {Line1.split("").map((char, index) => {
                 return (
@@ -116,7 +119,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="md:text-[36px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal lg:max-w-[500px] "
+              className="text-[28px] md:text-[42px] lg:text-[52px] text-slate-100 tracking-wide font-[500] font-sans font-normal lg:max-w-[500px] "
             >
               {Line2.split("").map((char, index) => {
                 return (
@@ -131,7 +134,7 @@ const HomeServices = () => {
               ref={aboutRef}
               initial="hidden"
               animate={animation}
-              className="md:text-[36px] lg:text-[52px] md:mb-6 lg:mb-[55px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
+              className="text-[28px] md:text-[42px] lg:text-[52px] md:mb-6 lg:mb-[55px] text-slate-100 tracking-wide font-[500] font-sans font-normal  lg:max-w-[500px] "
             >
               {Line3.split("").map((char, index) => {
                 return (
@@ -158,7 +161,7 @@ const HomeServices = () => {
                 hidden: { opacity: 0, y: 72 },
               }}
             >
-              <p className="md:text-[20px] lg:text-[26px] text-slate-200 tracking-wide font-light font-display lg:max-w-[719px] leading-[1.2]">
+              <p className="mt-6 md:mt-0 md:text-[20px] lg:text-[26px] text-slate-200 tracking-wide font-light font-display lg:max-w-[719px] leading-[1.4] md:leading-[1.2]">
                 Fantasy art is a genre that allows the imagination to soar. It
                 often features mythical creatures, magical landscapes, and epic
                 battles. From dragons and unicorns to wizards and warriors,
@@ -170,7 +173,7 @@ const HomeServices = () => {
             </motion.div>
           </About>
           <Services>
-            <h3 className="md:text-[32px] lg:text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
+            <h3 className="text-[28px] md:text-[32px] lg:text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
               Services
             </h3>
             {accordionIds.map((details, index) => (
@@ -292,13 +295,21 @@ const Flex = styled.div`
 `;
 
 const About = styled.div`
-  width: 100%;
-  max-width: 55%;
+  @media (min-width: 820px) {
+    width: 100%;
+    max-width: 55%;
+  }
 `;
 const Services = styled.div`
-  width: 500px;
-  max-width: 35%;
-  margin-top: 5vh;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 8vh;
+
+  @media (min-width: 820px) {
+    width: 500px;
+    max-width: 35%;
+    margin-top: 5vh;
+  }
 `;
 
 // Accordion

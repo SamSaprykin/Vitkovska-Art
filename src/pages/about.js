@@ -45,7 +45,7 @@ const AboutPage = () => {
         initial="initial"
         animate="enter"
         exit="exit"
-        className="flex flex-wrap md:-mx-10 text-slate-100 pt-40 pb-6 px-6 md:p-10 relative"
+        className="flex flex-wrap md:-mx-5 text-slate-100 pt-8 md:pt-12 pb-6 lg:px-6 md:p-5 lg:p-10 relative"
       >
         <motion.div
           initial="initial"
@@ -56,7 +56,10 @@ const AboutPage = () => {
           }}
           className="flex flex-wrap relative z-10 mb-18 w-full"
         >
-          <motion.div variants={fade} className="w-full md:w-5/12 md:pr-8">
+          <motion.div
+            variants={fade}
+            className="w-full md:w-6/12 lg:w-5/12 pr-6 lg:pr-8"
+          >
             <StaticImage
               src="../images/about-image.jpeg"
               alt="hero image"
@@ -64,16 +67,16 @@ const AboutPage = () => {
               layout="fixed"
               width={600}
               height={760}
-              className="!w-full overflow-hidden"
+              className="max-h-[400px] md:max-h-full !w-full overflow-hidden"
               quality={100}
             />
           </motion.div>
 
           <motion.div
             variants={fade}
-            className="content content--list w-11/12 md:w-6/12 xl:w-7/12 md:px-8"
+            className="mt-12 sm:mt-0 lg:mt-0 content content--list w-full md:w-6/12 xl:w-7/12 px-0 lg:px-8"
           >
-            <h1 className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <h1 className="text-slate-100  md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   I'm a{" "}
@@ -85,7 +88,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </h1>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <p className="text-slate-100 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   My primary tools are{" "}
@@ -97,7 +100,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <p className="text-slate-100 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   One of my favorite techniques is the kitbash technique, which
@@ -106,7 +109,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <p className="text-slate-100 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   By combining various 3D models and elements, I can create
@@ -119,7 +122,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <p className="text-slate-100 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   I should note that while I use a variety of digital tools and
@@ -129,7 +132,7 @@ const AboutPage = () => {
                 </motion.span>
               </span>
             </p>
-            <p className="text-slate-100 pr-4 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
+            <p className="text-slate-100 md:pr-0 max-w-6xl pb-0 text-2xl	mb-4">
               <span className="block relative overflow-hidden">
                 <motion.span variants={revealInOut} className="block">
                   If you're looking for a freelance digital artist who can bring

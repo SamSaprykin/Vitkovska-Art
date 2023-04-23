@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import { MenuButton } from "./menuButton";
 import CursorContext from "../context/CursorContext";
 
@@ -60,7 +61,7 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
         }}
         className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1]"
       >
-        <div className="flex px-8 flex-col justify-center h-full">
+        <div className="flex px-6 lg:px-8 flex-col justify-center h-full">
           {links.map((link) => {
             return (
               <motion.div
@@ -70,7 +71,7 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
                 className="w-fit"
               >
                 <Link
-                  className="text-6xl text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
+                  className="text-5xl lg:text-6xl text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
                   to={link.url}
                   onClick={() => setOpen(!isOpen)}
                   onMouseEnter={handleMouseEnter}
@@ -104,6 +105,8 @@ function Header({ location, setMagnetActive, magnetActive }) {
       imageName: null,
     });
   };
+
+  const isDesktop = useMediaQuery({ minWidth: 820 });
   return (
     <header className="max-w-full z-50	p-0 pb-0 md:p-0 md:pb-0 fixed top-0 left-0 right-0 md:px-0 lg:px-8 bg-bgMain">
       <motion.div
@@ -113,7 +116,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
         exit="exit"
       >
         <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-2 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
-          <li className="overflow-hidden w-[68px] hover:cursor-none">
+          <li className="overflow-hidden w-[40px] md:w-[68px] hover:cursor-none">
             <Link
               partiallyActive={true}
               activeClassName="opacity-100 cursor-none hover:cursor-none"
@@ -181,16 +184,16 @@ function Header({ location, setMagnetActive, magnetActive }) {
               animate="enter"
               exit="exit"
             >
-              <li className="flex justify-end h-[68px] flex flex-col justify-center">
+              <li className="flex justify-end h-[40px] md:h-[68px] flex flex-col justify-center">
                 <a
-                  className="text-xl md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
+                  className="text-lg md:text-xl pr-px text-slate-100 font-normal font-display hover:cursor-none"
                   partiallyActive={true}
                   activeClassName="opacity-100"
                   href={`mailto:vitkovskaya0592@gmail.com `}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  Hello@vitkovskaya.com
+                  {isDesktop ? "Hello@vitkovskaya.com" : "Mail me"}
                 </a>
               </li>
             </motion.div>

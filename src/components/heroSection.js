@@ -94,11 +94,11 @@ function Hero() {
   };
   return (
     <div
-      className="relative lg:min-h-screen overflow-hidden lg:mx-8 w-full mb-24 lg:mb-0"
+      className="pt-8 md:pt-12 lg:pt-0 relative min-h-[520px] md:min-h-[620px] lg:min-h-screen overflow-hidden lg:mx-8 w-full mb-12 md:mb-16 lg:mb-24 lg:mb-0"
       onMouseEnter={handleMouseEnter}
     >
       <motion.h2
-        className="md:text-[92px] lg:text-[120px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
+        className="text-[60px] md:text-[112px] lg:text-[120px] flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight	mix-blend-difference"
         variants={sentence}
         initial="hidden"
         animate="visible"
@@ -112,7 +112,7 @@ function Hero() {
         })}
       </motion.h2>
       <motion.h2
-        className="md:text-[112px] text-[180px] leading-none flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight mix-blend-difference"
+        className="text-[72px] md:text-[132px] text-[180px] flex overflow-hidden pr-px text-slate-100 font-normal font-sans relative z-10 leading-tight mix-blend-difference"
         variants={sentenceArt}
         initial="hidden"
         animate="visible"
@@ -125,9 +125,9 @@ function Hero() {
           );
         })}
       </motion.h2>
-      <div className="md:h-[50px] lg:h-[70px] md:mt-2 lg:mt-8 overflow-hidden">
+      <div className="md:h-[92px] lg:h-[70px] md:mt-2 lg:mt-8 overflow-hidden">
         <motion.h5
-          className="text-slate-100 italic font-serif md:text-3xl lg:text-5xl relative z-10 leading-tight mix-blend-difference"
+          className="text-slate-100 italic font-serif text-2xl md:text-3xl lg:text-5xl relative z-10 leading-tight mix-blend-difference"
           variants={sentencPosition}
           initial="hidden"
           animate="visible"
@@ -136,10 +136,10 @@ function Hero() {
         </motion.h5>
       </div>
 
-      <div className="flex absolute translate-x-neg50 rotate-neg90 bottom-36 left-[50px] hidden lg:block">
+      <div className="flex absolute translate-x-neg50 lg:rotate-neg90 bottom-0 lg:bottom-36 left-[50px] block">
         <ScrollDown />
       </div>
-      <div className="absolute right-0 lg:right-0 top-0 w-[360px] lg:w-[600px] overflow-hidden">
+      <div className="absolute right-0 lg:right-0 top-30 md:top-32 lg:top-0 w-[260px] md:w-[360px] lg:w-[600px] overflow-hidden">
         <StaticImage
           src="../images/hero-image.png"
           alt="hero image"
