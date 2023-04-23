@@ -250,7 +250,7 @@ const Item = ({
       <DescriptionWrapper>
         <SmallDescription>{column.title}</SmallDescription>
         <CategoryName
-          className="uppercase font-semibold font-sans text-[80px] md:text-[180px] lg:text-[260px] tracking-wider mt-[22vh]"
+          className="uppercase font-semibold font-sans text-[80px] md:text-[180px] lg:text-[260px] tracking-wider mt-[200px] md:mt-[22vh]"
           startHovering={startHovering}
           itemIndex={index}
         >
@@ -282,7 +282,7 @@ const Wrapper = styled.div`
 `;
 
 const DescriptionWrapper = styled.div`
-  height: 38vh;
+  height: 320px;
   position: relative;
 
   @media (min-width: 820px) {
@@ -351,7 +351,7 @@ const Flex = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  height: calc(var(--vh, 1vh) * 40);
+  height: 380px;
   ${(props) =>
     props.spaceBetween &&
     css`
