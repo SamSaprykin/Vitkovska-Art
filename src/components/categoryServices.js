@@ -134,7 +134,7 @@ const CategoryServices = () => {
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   return (
     <div
-      className="relative lg:min-h-screen overflow-hidden mt-8 md:mt-16 lg:mt-0 mb-12 lg:mb-0 mr-0 lg:mr-8 flex-col lg:flex flex-start lg:justify-end"
+      className="relative lg:min-h-screen overflow-hidden mt-8 md:mt-16 lg:mt-0 mb-12 lg:mb-0 mr-0 lg:mr-8 flex flex-col lg:flex-row flex-start lg:justify-end"
       onMouseEnter={handleMouseDefault}
       ref={ref}
     >
