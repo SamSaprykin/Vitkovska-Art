@@ -10,6 +10,7 @@ const useArtsColumns = () => {
             columnName
             art {
               artImage {
+                url
                 gatsbyImageData(layout: CONSTRAINED, formats: WEBP, width: 1200)
                 filename
               }
