@@ -115,7 +115,7 @@ function Header({ location, setMagnetActive, magnetActive }) {
         animate="enter"
         exit="exit"
       >
-        <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-2 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
+        <ul className="relative px-6 md:px-8 lg:px-0 flex flex-wrap justify-between items-center py-4 lg:py-2 border-b-[1px] border-white fixed top-0 left-0 right-0  bg-bgMain">
           <li className="overflow-hidden w-[40px] md:w-[68px] hover:cursor-none">
             <Link
               partiallyActive={true}

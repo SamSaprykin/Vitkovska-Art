@@ -18,7 +18,7 @@ const ImageLink = ({ index, element }) => {
     rootMargin,
   });
   const image = getImage(element.node.artImage.gatsbyImageData);
-  console.log(image);
+
   return (
     <div
       ref={ref}
