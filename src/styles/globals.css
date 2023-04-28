@@ -88,3 +88,8 @@ html {
 }
 
 
+@media (max-width: 780px) {
+  html {
+    scroll-snap-type: none;
+  }
+}
