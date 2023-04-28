@@ -56,6 +56,10 @@ export default function CategoryPage({ data, pageContext }) {
 
 const ImageHeading = styled(motion.h2)`
   left: calc(50% + 180px);
+
+  @media (max-width: 780px) {
+    left: 0%;
+  }
 `;
 
 const StyledSection = styled.section`
