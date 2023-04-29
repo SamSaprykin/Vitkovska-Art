@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { graphql } from "gatsby";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
+import CursorContext from "../context/CursorContext";
 
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -11,18 +13,19 @@ function useParallax(value, distance) {
 function Image({ element, index }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
+  const isDesktop = useMediaQuery({ minWidth: 600 });
+  const y = useParallax(scrollYProgress, isDesktop ? 300 : 100);
   const image = getImage(element.node.artImage.gatsbyImageData);
 
   console.log(image);
   return (
-    <StyledSection className="h-screen w-full flex justify-center items-center relative">
+    <StyledSection className="h-[500px] md:h-[720px] lg:h-screen w-full flex justify-center items-center relative">
       <div ref={ref}>
         <GatsbyImage image={image} />
       </div>
       <ImageHeading
         style={{ y }}
-        className="absolute m-0  text-[54px] lg:text-[78px] tracking-wide  text-slate-100 font-display capitalize z-10 leading-tight	mix-blend-difference"
+        className="absolute m-0  text-[54px] lg:text-[78px] tracking-wide  text-slate-100 font-sans font-black capitalize z-10 leading-tight	mix-blend-difference"
       >
         {`${index < 10 ? `#00${index}` : `#0${index}`}`}
       </ImageHeading>
@@ -38,7 +41,14 @@ export default function CategoryPage({ data, pageContext }) {
     restDelta: 0.006,
   });
   const artsList = data.allContentfulArt.edges;
+  const { setCursorType } = useContext(CursorContext);
 
+  useEffect(() => {
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
+  }, [setCursorType]);
   return (
     <div>
       {artsList.map((element, index) => (
@@ -55,9 +65,9 @@ export default function CategoryPage({ data, pageContext }) {
 }
 
 const ImageHeading = styled(motion.h2)`
-  left: calc(50% + 180px);
+  left: calc(50% + 120px);
 
-  @media (max-width: 780px) {
+  @media (max-width: 600px) {
     left: 0%;
   }
 `;
@@ -91,7 +101,7 @@ export const query = graphql`
           category
           artName
           artImage {
-            gatsbyImageData(width: 300, placeholder: DOMINANT_COLOR)
+            gatsbyImageData(width: 320, placeholder: DOMINANT_COLOR)
             url
           }
         }
