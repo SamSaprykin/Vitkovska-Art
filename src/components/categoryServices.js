@@ -10,18 +10,22 @@ import IconsLibrary from "./iconsLibrary";
 export const socialLinks = [
   {
     name: "instagram",
+    type: "Instagram",
     link: "https://www.instagram.com/vitkovskaya_art/",
   },
   {
     name: "twitter",
+    type: "Twitter",
     link: "https://twitter.com/vitkovskaya_art",
   },
   {
     name: "art-station",
+    type: "Art station",
     link: "https://www.artstation.com/vitkovskaya",
   },
   {
     name: "tiktok",
+    type: "Tiktok",
     link: "https://www.tiktok.com/@vitkovskaya_art",
   },
 ];

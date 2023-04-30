@@ -45,7 +45,6 @@ const Layout = ({ children, location }) => {
     imageName: null,
   });
 
-  console.log(location.pathname);
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>
       <Cursor hideCursor={magnetActive} />

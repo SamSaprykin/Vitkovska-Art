@@ -1,11 +1,12 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { MenuButton } from "./menuButton";
 import CursorContext from "../context/CursorContext";
+import { socialLinks } from "./categoryServices";
 
 const revealInOut = {
   initial: { y: "-100%", opacity: 0.2 },
@@ -59,29 +60,59 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
         animate={{
           y: !isOpen ? "-100%" : "0%",
         }}
-        className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1]"
+        className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1] flex justify-center"
       >
-        <div className="flex px-6 lg:px-8 flex-col justify-center h-full">
-          {links.map((link) => {
-            return (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                key={link.linkName}
-                className="w-fit"
-              >
-                <Link
-                  className="text-5xl lg:text-6xl text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
-                  to={link.url}
-                  onClick={() => setOpen(!isOpen)}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
+        <div className="flex flex-col lg:flex-row px-6 lg:px-8 h-full w-full max-w-[1084px] items-start lg:items-center justify-start lg:justify-between mt-24 lg:mt-0">
+          <div className="flex flex-col">
+            {links.map((link) => {
+              return (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  key={link.linkName}
+                  className="w-fit"
                 >
-                  {link.linkName}
-                </Link>
-              </motion.div>
-            );
-          })}
+                  <Link
+                    className="text-4xl md:text-5xl lg:text-6xl text-slate-100 tracking-wide font-[500] font-sans font-normal  max-w-[454px] h-max cursor-none	"
+                    to={link.url}
+                    onClick={() => setOpen(!isOpen)}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {link.linkName}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+          <div className="mt-8 lg:mt-0">
+            <h2 className="text-2xl md:text-3xl text-slate-100 tracking-wide font-[500] font-display font-normal  max-w-[454px]">
+              Social Media
+            </h2>
+            <div className="flex flex-col w-full mt-4 lg:mt-6">
+              {socialLinks.map((social) => {
+                return (
+                  <div key={social.name} className="my-1 lg:my-2">
+                    <a
+                      href={social.link}
+                      className="hover:cursor-none h-[30px] lg:h-[36px] overflow-hidden block"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseEnter}
+                    >
+                      <div className="flex flex-col ease-out duration-500 md:hover:translate-y-[-30px] lg:hover:translate-y-[-36px] h-[72px]">
+                        <h3 className="text-xl lg:text-2xl font-sans text-slate-200 tracking-wider capitalize">
+                          {social.type}
+                        </h3>
+                        <h3 className="text-xl lg:text-2xl font-sans text-slate-100 tracking-wider capitalize">
+                          {social.type}
+                        </h3>
+                      </div>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </motion.nav>
     </AnimatePresence>
@@ -91,6 +122,14 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
 function Header({ location, setMagnetActive, magnetActive }) {
   const [isOpen, setOpen] = useState(false);
   const { setCursorType } = useContext(CursorContext);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isOpen]);
 
   const handleMouseEnter = () => {
     setCursorType({

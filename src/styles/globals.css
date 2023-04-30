@@ -80,11 +80,12 @@ body {
 @tailwind utilities;
 
 
-
-
-
 html {
   scroll-snap-type: y mandatory;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 
