@@ -62,7 +62,7 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
         }}
         className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1] flex justify-center overflow-scroll"
       >
-        <div className="flex flex-col lg:flex-row px-6 lg:px-8 h-full w-full max-w-[1084px] items-start lg:items-center justify-start lg:justify-between mt-24 lg:mt-0 min-h-[620px]">
+        <div className="flex flex-col lg:flex-row px-6 lg:px-8 h-full w-full max-w-[1084px] items-start lg:items-center justify-start lg:justify-between mt-24 lg:mt-0 min-h-[600px]">
           <div className="flex flex-col">
             {links.map((link) => {
               return (
