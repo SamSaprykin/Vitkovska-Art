@@ -132,7 +132,7 @@ const StickySection = ({ setCursorType }) => {
                 href={social.link}
                 className="hover:cursor-none"
                 onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <IconsLibrary type={social.name} />
               </a>

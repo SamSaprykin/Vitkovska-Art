@@ -60,9 +60,9 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
         animate={{
           y: !isOpen ? "-100%" : "0%",
         }}
-        className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1] flex justify-center"
+        className="fixed inset-0 bg-bgMain/95 backdrop-blur z-[-1] flex justify-center overflow-scroll"
       >
-        <div className="flex flex-col lg:flex-row px-6 lg:px-8 h-full w-full max-w-[1084px] items-start lg:items-center justify-start lg:justify-between mt-24 lg:mt-0">
+        <div className="flex flex-col lg:flex-row px-6 lg:px-8 h-full w-full max-w-[1084px] items-start lg:items-center justify-start lg:justify-between mt-24 lg:mt-0 min-h-[620px]">
           <div className="flex flex-col">
             {links.map((link) => {
               return (
@@ -92,12 +92,15 @@ const Menu = ({ isOpen, setOpen, handleMouseEnter, handleMouseLeave }) => {
             <div className="flex flex-col w-full mt-4 lg:mt-6">
               {socialLinks.map((social) => {
                 return (
-                  <div key={social.name} className="my-1 lg:my-2">
+                  <div
+                    key={social.name}
+                    className="my-1 lg:my-2"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <a
                       href={social.link}
                       className="hover:cursor-none h-[30px] lg:h-[36px] overflow-hidden block"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseEnter}
                     >
                       <div className="flex flex-col ease-out duration-500 md:hover:translate-y-[-30px] lg:hover:translate-y-[-36px] h-[72px]">
                         <h3 className="text-xl lg:text-2xl font-sans text-slate-200 tracking-wider capitalize">
