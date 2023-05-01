@@ -94,7 +94,7 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         key="content"
         animate={{ height: isOpen ? "auto" : "0" }}
         transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] }}
-        className="text-base ml-10 text-dark font-light font-display relative overflow-hidden mb-2 lg:mb-4"
+        className="text-[18px] ml-10 text-dark font-light font-display relative overflow-hidden mb-2 lg:mb-4"
       >
         <span className="block text-slate-100 text-lg">{details.answer}</span>
       </motion.div>
@@ -130,7 +130,7 @@ const CommissionsPage = () => {
   return (
     <div className="pb-16 w-[full] max-w-[1080px] mx-auto">
       <SEO title="Comissions" />
-      <h1 className="text-3xl md:text-6xl lg:text-7xl text-slate-100 leading-extratight font-normal tracking-wide font-display font-medium mb-2 lg:mb-[50px] mt-12 lg:mt-8">
+      <h1 className="text-[34px] md:text-6xl text-slate-100 leading-extratight font-normal tracking-wide font-display font-medium mb-2 lg:mb-[50px] mt-14 lg:mt-8">
         Commisions are{" "}
         <span className="text-[#e78831] font-sans font-medium">Open</span>
       </h1>
@@ -142,10 +142,10 @@ const CommissionsPage = () => {
                 onMouseEnter={() => handleMouseEnter("scenery")}
                 onMouseLeave={handleMouseLeave}
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px]">
+                <h2 className="text-[28px] md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide mb-[32px]">
                   Scenery
                 </h2>
-                <h5 className="text-sm md:text-base max-w-[600px]">
+                <h5 className="text-[18px] max-w-[600px] text-slate-200 font-display">
                   Scenery art, also known as landscape art, is a genre of visual
                   art that depicts landscapes and natural scenery. It is a form
                   of representational art that aims to capture the beauty, mood,
@@ -156,7 +156,7 @@ const CommissionsPage = () => {
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
-                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px]"
+                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -175,10 +175,10 @@ const CommissionsPage = () => {
                 onMouseEnter={() => handleMouseEnter("backgrounds")}
                 onMouseLeave={handleMouseLeave}
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px]">
+                <h2 className="text-[28px] md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide mb-[32px]">
                   Backgrounds
                 </h2>
-                <h5 className="text-sm md:text-base max-w-[600px]">
+                <h5 className="text-[18px] max-w-[600px] text-slate-200 font-display">
                   Background art refers to the visual elements that make up the
                   background of a work of art or design, such as a painting,
                   drawing, or digital artwork. It is an important component of
@@ -190,7 +190,7 @@ const CommissionsPage = () => {
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
-                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px]"
+                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -210,10 +210,10 @@ const CommissionsPage = () => {
                 onMouseEnter={() => handleMouseEnter("nature")}
                 onMouseLeave={handleMouseLeave}
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px]">
+                <h2 className="text-[28px] md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide mb-[32px]">
                   Nature
                 </h2>
-                <h5 className="text-sm md:text-base max-w-[600px]">
+                <h5 className="text-[18px] max-w-[600px] text-slate-200 font-display ">
                   Nature art refers to art that is inspired by or depicts the
                   natural world, including landscapes, animals, plants, and
                   other natural phenomena. It can take many forms, including
@@ -226,7 +226,7 @@ const CommissionsPage = () => {
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
-                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px]"
+                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -247,10 +247,10 @@ const CommissionsPage = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px]">
+                  <h2 className="text-[28px] md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide mb-[32px]">
                     Characters
                   </h2>
-                  <h5 className="text-sm md:text-base max-w-[600px]">
+                  <h5 className="text-[18px] max-w-[600px] text-slate-200 font-display ">
                     Character art refers to artwork that depicts characters,
                     whether they are fictional or real. It can take many forms,
                     including illustrations, sketches, digital art, sculptures,
@@ -264,7 +264,7 @@ const CommissionsPage = () => {
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
-                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px]"
+                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -283,10 +283,10 @@ const CommissionsPage = () => {
                 onMouseEnter={() => handleMouseEnter("architecture")}
                 onMouseLeave={handleMouseLeave}
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px]">
+                <h2 className="text-[28px] md:text-3xl lg:text-4xl text-slate-100 leading-extratight font-black tracking-wide mb-[32px]">
                   Architecture
                 </h2>
-                <h5 className="text-sm md:text-base max-w-[600px]">
+                <h5 className="text-[18px] max-w-[600px] text-slate-200 font-display ">
                   Architecture art refers to the design and creation of
                   buildings and other structures that are not only functional
                   but also visually appealing and aesthetically pleasing. It is
@@ -298,7 +298,7 @@ const CommissionsPage = () => {
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
-                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[36px] md:h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px]"
+                    className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[36px] md:h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
                   >
