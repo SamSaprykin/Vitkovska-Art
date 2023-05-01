@@ -74,7 +74,7 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         onHoverEnd={() => setHovered(!hovered)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="text-2lg flex items-start text-2xl h-auto lg:h-[30px] mb-4 font-display text-slate-100 tracking-wide"
+        className="text-2lg flex items-start text-2xl h-auto lg:h-[30px] mb-2 lg:mb-4 font-display text-slate-100 tracking-wide"
       >
         <AccordionIcon>
           <motion.span
@@ -94,7 +94,7 @@ const Accordion = ({ details, expanded, setExpanded }) => {
         key="content"
         animate={{ height: isOpen ? "auto" : "0" }}
         transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] }}
-        className="text-base ml-10 text-dark font-light font-display relative overflow-hidden mb-4"
+        className="text-base ml-10 text-dark font-light font-display relative overflow-hidden mb-2 lg:mb-4"
       >
         <span className="block text-slate-100 text-lg">{details.answer}</span>
       </motion.div>
@@ -130,7 +130,7 @@ const CommissionsPage = () => {
   return (
     <div className="pb-16 w-[full] max-w-[1080px] mx-auto">
       <SEO title="Comissions" />
-      <h1 className="text-3xl md:text-6xl lg:text-7xl text-slate-100 leading-extratight font-normal tracking-wide font-display font-medium mb-2 lg:mb-[50px] mt-[5vh]">
+      <h1 className="text-3xl md:text-6xl lg:text-7xl text-slate-100 leading-extratight font-normal tracking-wide font-display font-medium mb-2 lg:mb-[50px] mt-12 lg:mt-8">
         Commisions are{" "}
         <span className="text-[#e78831] font-sans font-medium">Open</span>
       </h1>
