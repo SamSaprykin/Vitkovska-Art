@@ -30,23 +30,17 @@ const accordionItems = [
   },
   {
     id: 4,
-    title: "When will I receive the final artwork?",
-    answer:
-      "The final high quality artwork will be sent to the client after 100% payment has been received.",
-  },
-  {
-    id: 5,
     title: "What information do I need to provide to get started?",
     answer:
       "To get started, the client should provide a detailed description of their idea, along with any references that may be useful. If necessary, the client should also provide a contract or NDA.",
   },
   {
-    id: 6,
+    id: 5,
     title: "Are commercial rights included in the price?",
     answer: "Yes, commercial rights are included in the price.",
   },
   {
-    id: 7,
+    id: 6,
     title: "How long will it take to receive my commission?",
     answer: "Commission delivery typically takes between 4-7 days.",
   },
@@ -55,7 +49,7 @@ const accordionItems = [
 const Accordion = ({ details, expanded, setExpanded }) => {
   const isOpen = details.id === expanded;
   const [hovered, setHovered] = useState(false);
-  const [letsDiscuss, setLetsDiscuss] = useState(null);
+
   const { setCursorType } = useContext(CursorContext);
 
   const handleMouseEnter = () => {
