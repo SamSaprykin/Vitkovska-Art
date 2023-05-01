@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
+import styled from "styled-components";
 
 function CommissionsImage(props) {
   const Images = useStaticQuery(graphql`
@@ -61,7 +62,13 @@ function CommissionsImage(props) {
   }
   const image = getImage(Images[commissionName]);
 
-  return <GatsbyImage image={image} alt={altText} style={styles} />;
+  return <StyledGatsbyImage image={image} alt={altText} style={styles} />;
 }
+
+const StyledGatsbyImage = styled(GatsbyImage)`
+  @media (max-width: 820px) {
+    max-width: 100px;
+  }
+`;
 
 export default CommissionsImage;

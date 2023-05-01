@@ -158,7 +158,7 @@ const CommissionsPage = () => {
                   and essence of a particular natural setting.
                 </h5>
               </div>
-              <div className="flex flex-col">
+              <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
@@ -169,7 +169,7 @@ const CommissionsPage = () => {
                     Let&apos;s Discuss
                   </a>
                 </div>
-                <span className="text-2xl lg:text-3xl pt-6 md:pt-12 align-bottom h-full">
+                <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
                   from 250 usd
                 </span>
               </div>
@@ -192,7 +192,7 @@ const CommissionsPage = () => {
                   of a piece.
                 </h5>
               </div>
-              <div className="flex flex-col">
+              <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
@@ -204,7 +204,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
 
-                <span className="text-2xl lg:text-3xl pt-6 md:pt-12 align-bottom h-full">
+                <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
                   from 120 usd
                 </span>
               </div>
@@ -228,7 +228,7 @@ const CommissionsPage = () => {
                   interpretations.
                 </h5>
               </div>
-              <div className="flex flex-col">
+              <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
@@ -240,7 +240,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
 
-                <span className="text-2xl lg:text-3xl pt-6 md:pt-12 align-bottom h-full">
+                <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
                   from 160 usd
                 </span>
               </div>
@@ -266,7 +266,7 @@ const CommissionsPage = () => {
                   </h5>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
@@ -277,7 +277,7 @@ const CommissionsPage = () => {
                     Let&apos;s Discuss
                   </a>
                 </div>
-                <span className="text-2xl lg:text-3xl pt-6 md:pt-12 align-bottom h-full">
+                <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
                   from 200 usd
                 </span>
               </div>
@@ -300,7 +300,7 @@ const CommissionsPage = () => {
                   to create structures that are both beautiful and functional.
                 </h5>
               </div>
-              <div className="flex flex-col justify-between">
+              <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[54px] overflow-hidden">
                   <a
                     href={`mailto:vitkovskaya0592@gmail.com `}
@@ -311,7 +311,7 @@ const CommissionsPage = () => {
                     Let&apos;s Discuss
                   </a>
                 </div>
-                <span className="text-2xl lg:text-3xl pt-6 md:pt-12 align-bottom h-full">
+                <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
                   from 220 usd
                 </span>
               </div>
