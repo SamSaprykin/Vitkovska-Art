@@ -198,17 +198,6 @@ const ContactPage = () => {
               onMouseLeave={handleMouseLeave}
             />
           </div>
-          <div className="my-4">
-            <h3 className="text-lg md:text-xl text-slate-100 mb-4 font-display">
-              Choose art type
-            </h3>
-            <SelectInput
-              options={options}
-              onSelect={onSelect}
-              handleMouseLeave={handleMouseLeave}
-              handleMouseEnter={handleMouseEnter}
-            />
-          </div>
           <button
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
