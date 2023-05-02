@@ -136,7 +136,7 @@ const ContactPage = () => {
             })}
           </motion.div>{" "}
           <motion.div
-            className="pl-20 text-[#e78831] font-medium"
+            className="pl-12 md:pl-20 text-[#e78831] font-medium"
             variants={sentenceArt}
             initial="hidden"
             animate="visible"
