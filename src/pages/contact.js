@@ -303,9 +303,10 @@ const ListItem = styled.li`
 
 const StyledInput = styled.input`
   height: 100px;
-  border-top: 1px #000;
-  border-right: 1px #000;
-  border-left: 1px #000;
+  border-top: 1px rgb(241 245 249);
+  border-right: 1px rgb(241 245 249);
+  border-left: 1px rgb(241 245 249);
+  border-radius: 0px;
   background-color: transparent;
   color: #fff;
   font-size: 42px;
