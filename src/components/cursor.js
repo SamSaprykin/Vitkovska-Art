@@ -67,6 +67,12 @@ const Cursor = () => {
             altText={cursorType.imageName}
           />
         </div>
+      ) : cursorType.type === "hover-input" ? (
+        <span
+          className={`absolute w-48 h-48 -top-12 -left-12 pointer-events-none flex justify-center items-center mix-blend-difference text-3xl md:text-4xl text-slate-100 opacity-75 font-display`}
+        >
+          abc...
+        </span>
       ) : (
         <motion.div
           layoutId="cursor"

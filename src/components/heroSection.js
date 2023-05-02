@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import ScrollDown from "./scrollDown";
 import CursorContext from "../context/CursorContext";
 
-const sentence = {
+export const sentence = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
@@ -28,7 +28,7 @@ const sentencPosition = {
   },
 };
 
-const sentenceArt = {
+export const sentenceArt = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
@@ -38,7 +38,7 @@ const sentenceArt = {
   },
 };
 
-const letter = {
+export const letter = {
   visible: {
     opacity: 1,
     y: 0,
@@ -59,7 +59,7 @@ const letter = {
   },
 };
 
-const letterArt = {
+export const letterArt = {
   visible: {
     opacity: 1,
     y: 0,

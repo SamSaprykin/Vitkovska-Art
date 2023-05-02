@@ -224,6 +224,20 @@ const IconsLibrary = ({ type, className }) => {
         />
       </g>
     </svg>
+  ) : type === "arrow-down" ? (
+    <svg
+      width="9"
+      height="5"
+      viewBox="0 0 9 5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.8125 1.08691L4.24519 4.14461L0.677885 1.08691"
+        stroke="white"
+        strokeWidth="1.2"
+      ></path>
+    </svg>
   ) : (
     <></>
   );
