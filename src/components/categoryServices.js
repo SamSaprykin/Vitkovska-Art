@@ -20,7 +20,7 @@ export const socialLinks = [
   },
   {
     name: "art-station",
-    type: "Art station",
+    type: "Artstation",
     link: "https://www.artstation.com/vitkovskaya",
   },
   {

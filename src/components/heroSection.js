@@ -16,7 +16,7 @@ export const sentence = {
   },
 };
 
-const sentencPosition = {
+export const sentencPosition = {
   hidden: { y: 70 },
   visible: {
     y: 0,

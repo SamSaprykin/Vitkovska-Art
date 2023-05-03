@@ -71,26 +71,21 @@ const ContactPage = () => {
   const { setCursorType } = useContext(CursorContext);
   const [inputs, setInputs] = useState({
     name: "",
-    company: "",
     email: "",
     details: "",
-    services: [
-      { value: "interface", isChecked: false },
-      { value: "illustrations", isChecked: false },
-      { value: "development", isChecked: false },
-      { value: "branding", isChecked: false },
-      { value: "animation", isChecked: false },
-    ],
   });
+
   const [serverState, setServerState] = useState({
     submitting: false,
     status: null,
   });
+
   const [errors, setErrors] = useState({
     nameError: "",
     emailError: "",
     detailsError: "",
   });
+
   const handleOnChange = (event) => {
     event.persist();
 
@@ -172,10 +167,8 @@ const ContactPage = () => {
     if (ok) {
       setInputs({
         name: "",
-        company: "",
         email: "",
         details: "",
-        services: ["", "", "", ""],
       });
     }
   };
