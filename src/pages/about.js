@@ -138,7 +138,7 @@ const AboutPage = () => {
                   If you're looking for a freelance digital artist who can bring
                   your ideas to life,{" "}
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="text-[#e78831] italic font-serif hover:cursor-none hover:text-slate-200 focus:text-slate-200transition ease-in-out duration-300"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -174,7 +174,7 @@ const AboutPage = () => {
           <motion.a
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            href={`mailto:vitkovskaya0592@gmail.com `}
+            href={`mailto:vitkovskaya.artwork@gmail.com`}
             variants={fade}
             className="text-[#e78831] block italic font-serif text-2xl md:text-4xl xl:text-5xl 3xl:text-6xl nav--active nav--active--large relative hover:text-slate-200 focus:text-slate-200 transition ease-in-out duration-300 hover:cursor-none"
           >

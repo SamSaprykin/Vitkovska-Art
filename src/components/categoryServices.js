@@ -196,7 +196,7 @@ const CategoryServices = () => {
           className="text-[#e78831] text-xl md:text-2xl pr-px text-slate-100 font-serif font-display hover:cursor-none mt-4 hover:text-slate-200 focus:text-slate-200 transition ease-in-out"
           partiallyActive={true}
           activeClassName="opacity-100"
-          href={`mailto:vitkovskaya0592@gmail.com `}
+          href={`mailto:vitkovskaya.artwork@gmail.com`}
           onMouseEnter={handleMouseEnterLink}
           onMouseLeave={handleMouseLeaveLink}
         >

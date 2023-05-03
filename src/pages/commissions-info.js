@@ -155,7 +155,7 @@ const CommissionsPage = () => {
               <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
@@ -189,7 +189,7 @@ const CommissionsPage = () => {
               <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
@@ -225,7 +225,7 @@ const CommissionsPage = () => {
               <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
@@ -263,7 +263,7 @@ const CommissionsPage = () => {
               <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}
@@ -297,7 +297,7 @@ const CommissionsPage = () => {
               <div className="w-full md:w-auto pt-6 md:pt-0 flex flex-row md:flex-col justify-between">
                 <div className="h-[36px] md:h-[54px] overflow-hidden">
                   <a
-                    href={`mailto:vitkovskaya0592@gmail.com `}
+                    href={`mailto:vitkovskaya.artwork@gmail.com`}
                     className="ease-out duration-500 text-[#e78831] text-2xl lg:text-3xl hover:cursor-none h-[36px] md:h-[54px] block translate-y-[36px] md:translate-y-[54px] group-hover:translate-y-[0px] font-display "
                     onMouseEnter={handleMouseEnterLink}
                     onMouseLeave={handleMouseLeave}

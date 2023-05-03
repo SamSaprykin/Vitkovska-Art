@@ -1,22 +1,24 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { navigate } from "gatsby";
 import SEO from "../components/seo";
 import CursorContext from "../context/CursorContext";
 import ScrollDown from "../components/scrollDown";
-
 import {
   sentence,
   letter,
   sentenceArt,
   letterArt,
 } from "../components/heroSection";
-import { useClickOutside } from "../hooks/useClickOutside";
-import IconsLibrary from "../components/iconsLibrary";
+
+// import { useClickOutside } from "../hooks/useClickOutside";
+// import IconsLibrary from "../components/iconsLibrary";
 
 const line1 = "Let's start";
 const line2 = "your project";
-
+/*
 const SelectInput = ({
   options,
   onSelect,
@@ -64,23 +66,134 @@ const SelectInput = ({
     </DropDownContainer>
   );
 };
-
+*/
 const ContactPage = () => {
   const { setCursorType } = useContext(CursorContext);
+  const [inputs, setInputs] = useState({
+    name: "",
+    company: "",
+    email: "",
+    details: "",
+    services: [
+      { value: "interface", isChecked: false },
+      { value: "illustrations", isChecked: false },
+      { value: "development", isChecked: false },
+      { value: "branding", isChecked: false },
+      { value: "animation", isChecked: false },
+    ],
+  });
+  const [serverState, setServerState] = useState({
+    submitting: false,
+    status: null,
+  });
+  const [errors, setErrors] = useState({
+    nameError: "",
+    emailError: "",
+    detailsError: "",
+  });
+  const handleOnChange = (event) => {
+    event.persist();
 
-  const [selectData, setSelectData] = useState(null);
-  const options = [
-    { value: "scenery art", label: "Scenery" },
-    { value: "backgrounds art", label: "Backgrounds" },
-    { value: "nature art", label: "Nature" },
-    { value: "characters art", label: "Characters" },
-    { value: "architecture art", label: "Architecture" },
-  ];
+    setInputs((prev) => ({
+      ...prev,
+      [event.target.id]: event.target.value,
+    }));
+  };
 
-  const onSelect = (inputId, value) => {
-    setSelectData((oldSelectData) => {
-      return { ...(oldSelectData || {}), [inputId]: value };
+  const re =
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const checkNameInput = (event) => {
+    event.persist();
+
+    if (inputs.name.length === 0) {
+      setErrors((prev) => ({
+        ...prev,
+        nameError: "Name is required ",
+      }));
+    } else if (inputs.name.length < 3) {
+      setErrors((prev) => ({
+        ...prev,
+        nameError: "Please provide a valid name.",
+      }));
+    } else {
+      setTimeout(() => {
+        setErrors((prev) => ({
+          ...prev,
+          nameError: "",
+        }));
+      }, 500);
+    }
+  };
+
+  const checkEmailInput = (event) => {
+    event.persist();
+    if (inputs.email.length === 0) {
+      setErrors((prev) => ({
+        ...prev,
+        emailError: "E-mail is required ",
+      }));
+    } else if (inputs.email.length < 2 || re.test(inputs.email) === false) {
+      setErrors((prev) => ({
+        ...prev,
+        emailError: "Please provide a valid e-mail address.",
+      }));
+    } else {
+      setTimeout(() => {
+        setErrors((prev) => ({
+          ...prev,
+          emailError: "",
+        }));
+      }, 500);
+    }
+  };
+
+  const checkDetailsInput = (event) => {
+    event.persist();
+    if (inputs.details.length === 0) {
+      setErrors((prev) => ({
+        ...prev,
+        detailsError: "Please provide more information about your project.",
+      }));
+    } else {
+      setTimeout(() => {
+        setErrors((prev) => ({
+          ...prev,
+          detailsError: "",
+        }));
+      }, 500);
+    }
+  };
+  const handleServerResponse = (ok, msg) => {
+    setServerState({
+      submitting: false,
+      status: { ok, msg },
     });
+    if (ok) {
+      setInputs({
+        name: "",
+        company: "",
+        email: "",
+        details: "",
+        services: ["", "", "", ""],
+      });
+    }
+  };
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    setServerState({ submitting: true });
+    axios({
+      method: "POST",
+      url: `https://formspree.io/f/${process.env.GATSBY_FORMSPREE_CONTACT_FORM_ID}`,
+      data: inputs,
+    })
+      .then((r) => {
+        handleServerResponse(true, "Thanks!");
+        navigate("/thank-you");
+      })
+      .catch((r) => {
+        handleServerResponse(false, r.response.data.error);
+      });
   };
 
   const handleMouseEnter = () => {
@@ -155,7 +268,11 @@ const ContactPage = () => {
         </div>
       </div>
       <div className="py-6 md:py-12 w-full flex justify-end">
-        <form className="w-full max-w-[600px] flex flex-col">
+        <form
+          className="w-full max-w-[600px] flex flex-col"
+          onSubmit={handleOnSubmit}
+          method="post"
+        >
           <div className="my-4">
             <h3 className="text-lg md:text-xl text-slate-100 mb-4 font-display">
               Your name*
@@ -168,7 +285,12 @@ const ContactPage = () => {
               required
               onMouseEnter={handleMouseEnterInput}
               onMouseLeave={handleMouseLeave}
+              onChange={handleOnChange}
+              onBlur={checkNameInput}
             />
+            <FormTextError error={errors.nameError}>
+              <span>{errors.nameError}</span>
+            </FormTextError>
           </div>
           <div className="my-4">
             <h3 className="text-lg md:text-xl text-slate-100 mb-4 font-display">
@@ -182,26 +304,43 @@ const ContactPage = () => {
               required
               onMouseEnter={handleMouseEnterInput}
               onMouseLeave={handleMouseLeave}
+              onChange={handleOnChange}
+              onBlur={checkEmailInput}
             />
+            <FormTextError error={errors.emailError}>
+              <span>{errors.emailError}</span>
+            </FormTextError>
           </div>
           <div className="my-4">
             <h3 className="text-lg md:text-xl text-slate-100 mb-4 font-display">
-              Your message
+              Your message*
             </h3>
             <StyledTextarea
               type="message"
-              id="message"
+              id="details"
               name=""
               placeholder="Your message..."
               required
               onMouseEnter={handleMouseEnterInput}
               onMouseLeave={handleMouseLeave}
+              onChange={handleOnChange}
+              onBlur={checkDetailsInput}
             />
+            <FormTextError error={errors.detailsError}>
+              <span>{errors.detailsError}</span>
+            </FormTextError>
           </div>
           <button
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="block rounded-md text-[#e78831] block italic font-serif text-2xl md:text-4xl xl:text-5xl 3xl:text-6xl hover:text-slate-100 focus:text-slate-100 transition ease-in-out duration-300 hover:cursor-none text-center"
+            disabled={
+              !!(errors.nameError || errors.emailError || errors.detailsError)
+            }
+            className={` ${
+              errors.nameError || errors.emailError || errors.detailsError
+                ? "opacity-30"
+                : "opacity-100"
+            } block rounded-md text-[#e78831]  block italic font-serif text-2xl md:text-4xl xl:text-5xl 3xl:text-6xl hover:text-slate-100 focus:text-slate-100 transition ease-in-out duration-300 hover:cursor-none text-center`}
           >
             SEND
           </button>
@@ -210,6 +349,8 @@ const ContactPage = () => {
     </div>
   );
 };
+
+/*
 
 const DropDownContainer = styled.div`
   text-align: left;
@@ -290,6 +431,8 @@ const ListItem = styled.li`
   }
 `;
 
+*/
+
 const StyledInput = styled.input`
   height: 100px;
   border-top: 1px rgb(241 245 249);
@@ -349,6 +492,33 @@ const StyledTextarea = styled.textarea`
     font-size: 32px;
     padding-top: 16px;
     line-height: 1.1;
+  }
+`;
+
+const FormTextError = styled.div`
+  height: 42px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  font-family: Helvetica Neue;
+  span {
+    color: #fa4e4e;
+    bottom: ${({ error }) => {
+      if (error === "") return "26px";
+      if (error !== "") return "0";
+    }};
+    opacity: ${({ error }) => {
+      if (error === "") return "0";
+      if (error !== "") return "1";
+    }};
+    display: block;
+    position: absolute;
+    transition: all 1s ease-in-out;
+    font-size: 22px;
+
+    @media (max-width: 560px) {
+      font-size: 16px;
+    }
   }
 `;
 

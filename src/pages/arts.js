@@ -112,7 +112,7 @@ const StickySection = ({ setCursorType }) => {
         onMouseLeave={handleMouseLeave}
       >
         <a
-          href={`mailto:vitkovskaya0592@gmail.com `}
+          href={`mailto:vitkovskaya.artwork@gmail.com`}
           className="text-[#e78831] block italic font-serif text-3xl md:text-4xl xl:text-5xl 3xl:text-6xl nav--active nav--active--large relative hover:text-white focus:text-white transition ease-in-out duration-300 hover:cursor-none"
         >
           Drop me a line!
