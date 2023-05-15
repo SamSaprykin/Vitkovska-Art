@@ -164,7 +164,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  from 250 usd
+                  *from 250 usd
                 </span>
               </div>
             </li>
@@ -199,7 +199,7 @@ const CommissionsPage = () => {
                 </div>
 
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  from 120 usd
+                  *from 170 usd
                 </span>
               </div>
             </li>
@@ -235,7 +235,7 @@ const CommissionsPage = () => {
                 </div>
 
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  from 160 usd
+                  *from 180 usd
                 </span>
               </div>
             </li>
@@ -272,7 +272,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  from 200 usd
+                  *from 220 usd
                 </span>
               </div>
             </li>
@@ -306,13 +306,17 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  from 220 usd
+                  *from 240 usd
                 </span>
               </div>
             </li>
           </div>
         </ul>
       </div>
+      <h5 className="sm:text-xs lg:text-base text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px] lg:mb-16 text-right font-sans mt-2">
+        *Usually price depends on complexity of artwork and and negotiated
+        individually
+      </h5>
       <Services>
         <h3 className="text-3xl md:text-4xl lg:text-5xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px] lg:mb-16">
           Frequently asked questions
@@ -333,7 +337,7 @@ const CommissionsPage = () => {
 const Services = styled.div`
   width: 800px;
   max-width: 60%;
-  margin-top: 5vh;
+  margin-top: 80px;
 
   @media (max-width: 820px) {
     max-width: 100%;

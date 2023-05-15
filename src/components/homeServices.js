@@ -1,52 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 // Styled Components
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "gatsby";
 import CursorContext from "../context/CursorContext";
-
-const accordionIds = [
-  {
-    id: 0,
-    title: "Fantasy",
-    results: [
-      "Backgrounds",
-      "Characters",
-      "Creatures",
-      "Fantasy Animals",
-      "Architecture",
-      "Fantasy interior",
-    ],
-  },
-  {
-    id: 1,
-    title: "Nature",
-    results: ["Landscapes", "Tress", "Mountains", "Dailies", "LTO-Archiving"],
-  },
-  {
-    id: 2,
-    title: "Futuristic",
-    results: ["Architecture", "Backgrounds"],
-  },
-  {
-    id: 3,
-    title: "Close Up Objects",
-    results: [
-      "Backgrounds",
-      "Characters",
-      "Creatures",
-      "Fantasy Animals",
-      "Architecture",
-      "Fantasy interior",
-    ],
-  },
-];
 
 const HomeServices = () => {
   // Default state, using number for our id. Which ever the number/id is in the state. That will be opened.
-  const [expanded, setExpanded] = useState(0);
+  // const [expanded, setExpanded] = useState(0);
+
   const animation = useAnimation();
+  const { setCursorType } = useContext(CursorContext);
   const isDesktop = useMediaQuery({ minWidth: 820 });
   const rootMargin = isDesktop ? "-300px" : "0px";
   const [aboutRef, inView] = useInView({
@@ -92,8 +58,23 @@ const HomeServices = () => {
     },
   };
   const Line1 = "Hello guys!";
-  const Line2 = "My name is Ekaterina";
+  const Line2 = "My name is Kateryna";
   const Line3 = "and I`m Digital artist";
+
+  const handleMouseEnter = () => {
+    setCursorType({
+      type: "hover-link",
+      imageName: null,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setCursorType({
+      type: "default",
+      imageName: null,
+    });
+  };
+
   return (
     <div className="relative lg:min-h-screen overflow-hidden lg:mx-8 w-full lg:pl-12">
       <Container>
@@ -173,23 +154,75 @@ const HomeServices = () => {
             </motion.div>
           </About>
           <Services>
-            <h3 className="text-[28px] md:text-[32px] lg:text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
-              Services
-            </h3>
-            {accordionIds.map((details, index) => (
-              <Accordion
-                key={index}
-                details={details}
-                expanded={expanded}
-                setExpanded={setExpanded}
-              />
-            ))}
+            <h5 className="text-right text-3xl md:text-4xl lg:text-6xl leading-tightmt-14 text-slate-200 font-display uppercase tracking-wide font-semibold">
+              <span className="text-[#E78831] font-sans">commissions</span>{" "}
+              <br /> are open
+            </h5>
+            <Link
+              className="text-slate-100 mt-4 text-xl hover:cursor-none"
+              to="/commissions-info"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              Read more
+            </Link>
           </Services>
         </Flex>
       </Container>
     </div>
   );
 };
+
+/*
+
+const accordionIds = [
+  {
+    id: 0,
+    title: "Fantasy",
+    results: [
+      "Backgrounds",
+      "Characters",
+      "Creatures",
+      "Fantasy Animals",
+      "Architecture",
+      "Fantasy interior",
+    ],
+  },
+  {
+    id: 1,
+    title: "Nature",
+    results: ["Landscapes", "Tress", "Mountains", "Dailies", "LTO-Archiving"],
+  },
+  {
+    id: 2,
+    title: "Futuristic",
+    results: ["Architecture", "Backgrounds"],
+  },
+  {
+    id: 3,
+    title: "Close Up Objects",
+    results: [
+      "Backgrounds",
+      "Characters",
+      "Creatures",
+      "Fantasy Animals",
+      "Architecture",
+      "Fantasy interior",
+    ],
+  },
+];
+
+<h3 className="text-[28px] md:text-[32px] lg:text-[48px] text-slate-100 leading-extratight font-normal tracking-wide font-display mb-[32px]">
+Services
+</h3>
+{accordionIds.map((details, index) => (
+<Accordion
+  key={index}
+  details={details}
+  expanded={expanded}
+  setExpanded={setExpanded}
+/>
+))}
 
 const Accordion = ({ details, expanded, setExpanded }) => {
   const isOpen = details.id === expanded;
@@ -250,6 +283,8 @@ const Accordion = ({ details, expanded, setExpanded }) => {
   );
 };
 
+*/
+
 const Container = styled.div`
   flex-grow: 1;
   margin: 0 auto;
@@ -301,18 +336,28 @@ const About = styled.div`
   }
 `;
 const Services = styled.div`
+  margin: 4vh 0 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  position: relative;
   width: 100%;
-  max-width: 100%;
-  margin-top: 8vh;
 
   @media (min-width: 820px) {
-    width: 500px;
-    max-width: 35%;
-    margin-top: 5vh;
+    margin-top: 14vh;
+    margin-right: 50px;
+    width: 33%;
+  }
+
+  .rotate-arrow {
+    transform: rotate(-90deg);
   }
 `;
 
 // Accordion
+
+/*
 
 const AccordionIcon = styled.div`
   display: flex;
@@ -326,5 +371,7 @@ const AccordionIcon = styled.div`
     transition: all 0.1s ease-in-out;
   }
 `;
+
+*/
 
 export default HomeServices;

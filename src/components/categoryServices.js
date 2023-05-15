@@ -3,7 +3,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styled, { css } from "styled-components";
-import { navigate } from "gatsby";
+import { navigate, graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import CursorContext from "../context/CursorContext";
 import IconsLibrary from "./iconsLibrary";
 
@@ -41,10 +42,10 @@ const columnsList = [
   },
   {
     id: 1,
-    title: "Backgrounds",
+    title: "Characters",
     backgroundColor: "bg-cyan-500",
     columnHeightClassname: "",
-    widthColumn: "18%",
+    widthColumn: "17%",
     heightColumn: "77%",
   },
   {
@@ -57,11 +58,12 @@ const columnsList = [
   },
   {
     id: 3,
-    title: "Characters",
+    title: "Fantasy",
     backgroundColor: "bg-neutral-500",
     columnHeightClassname: "",
-    widthColumn: "20%",
-    heightColumn: "90%",
+    widthColumn: "22%",
+    heightColumn: "94%",
+    imageName: "crystal",
   },
   {
     id: 4,
@@ -136,6 +138,17 @@ const CategoryServices = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
+
+  const Images = useStaticQuery(graphql`
+    query HighlightImage {
+      crystal: contentfulArt(artName: { eq: "Portal2" }) {
+        id
+        artImage {
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+        }
+      }
+    }
+  `);
   return (
     <div
       className="relative lg:min-h-screen overflow-hidden mt-8 md:mt-16 lg:mt-0 mb-12 lg:mb-0 mr-0 lg:mr-8 flex flex-col lg:flex-row flex-start lg:justify-end"
@@ -159,6 +172,7 @@ const CategoryServices = () => {
                   column={column}
                   handleMouseEnter={handleMouseEnter}
                   handleMouseLeave={handleMouseLeave}
+                  images={Images}
                   startHovering={startHovering}
                   inView={inView}
                 />
@@ -214,6 +228,7 @@ const Item = ({
   handleMouseLeave,
   startHovering,
   inView,
+  images,
 }) => {
   const controls = useAnimation();
 
@@ -236,6 +251,15 @@ const Item = ({
   const navigateTo = () => {
     navigate("/arts/architecture/");
   };
+
+  console.log(images);
+  const image = images[column.imageName];
+  let gImage;
+  if (image) {
+    gImage = getImage(image.artImage);
+  }
+
+  console.log(gImage, column.imageName);
   return (
     <ColumnServices
       key={column.title}
@@ -251,6 +275,11 @@ const Item = ({
       animate={controls}
       onClick={navigateTo}
     >
+      {gImage && (
+        <div className="absolute top-0 left-0 max-h-[200px] overflow-hidden flex jsutify-center items-center">
+          <GatsbyImage image={gImage} alt={column.title} />
+        </div>
+      )}
       <DescriptionWrapper>
         <SmallDescription>{column.title}</SmallDescription>
         <CategoryName
@@ -293,7 +322,7 @@ const DescriptionWrapper = styled.div`
     height: 47vh;
   }
   @media (min-width: 1280px) {
-    height: 70vh;
+    height: 62vh;
   }
 `;
 
@@ -328,7 +357,7 @@ const SmallDescription = styled.span`
   position: absolute;
   transform: rotate(90deg);
   left: 0px;
-  top: 8vh;
+  top: 10vh;
   font-size: 16px;
   font-family: Helvetica Neue;
   transform-origin: 0% 100%;
