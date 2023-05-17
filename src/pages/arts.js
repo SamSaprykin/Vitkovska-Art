@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import {
@@ -7,82 +7,11 @@ import {
   useTransform,
   circOut,
 } from "framer-motion";
+import { Link } from "gatsby";
 import useArtsColumns from "../hooks/useArtsPageColumns";
 import CursorContext from "../context/CursorContext";
 import { socialLinks } from "../components/categoryServices";
 import IconsLibrary from "../components/iconsLibrary";
-
-const dropIn = {
-  hidden: {
-    y: "-100vh",
-    opacity: 0,
-  },
-  visible: {
-    y: "0",
-    opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
-    },
-  },
-  exit: {
-    y: "100vh",
-    opacity: 0,
-  },
-};
-
-const Modal = ({ handleClose, onClick, modalImage }) => {
-  const { setCursorType } = useContext(CursorContext);
-  const handleMouseEnter = () => {
-    setCursorType({
-      type: "hover-image",
-      imageName: null,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setCursorType({
-      type: "default",
-      imageName: null,
-    });
-  };
-  return (
-    <motion.div
-      onClick={onClick}
-      className="w-screen h-screen fixed left-0 top-0 z-[99] bg-bgMain/95 p-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="flex justify-center flex-col items-center"
-        variants={dropIn}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <button
-          onClick={handleClose}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="text-[#e78831] text-2xl font-bold font-display absolute top-5 w-20 h-20 bg-slate-100 rounded-full flex justify-center items-center p-1 z-[10] hover:cursor-none"
-        >
-          Close
-        </button>
-        <div className="my-8 h-screen">
-          <GatsbyImage
-            image={modalImage}
-            className=" max-h-[90vh] overflow-hidden"
-            objectFit="contain"
-          />
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 const StickySection = ({ setCursorType }) => {
   const handleMouseEnter = () => {
@@ -144,31 +73,22 @@ const StickySection = ({ setCursorType }) => {
   );
 };
 
-const ArtWrapper = ({
-  handleMouseEnter,
-  handleMouseLeave,
-  column,
-  setModalOpen,
-  setModalImage,
-}) => {
+const ArtWrapper = ({ handleMouseEnter, handleMouseLeave, column }) => {
   return (
     <div className="w-full">
       {column.art.map((artItem) => {
         const image = getImage(artItem.artImage);
-        const handleOpenModal = () => {
-          setModalOpen(true);
-          setModalImage(image);
-        };
+
         return (
-          <div
-            className="my-2 md:my-4 lg:my-8"
+          <Link
+            className="my-2 md:my-4 lg:my-8 block"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             key={artItem.filename}
-            onClick={handleOpenModal}
+            to={artItem.category.toLowerCase()}
           >
             <GatsbyImage image={image} className="!w-full overflow-hidden	" />
-          </div>
+          </Link>
         );
       })}
     </div>
@@ -198,11 +118,6 @@ const ArtsPage = () => {
     });
   };
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState();
-
-  const close = () => setModalOpen(false);
-
   return (
     <>
       <div className="flex justify-center items-start h-full overflow-hidden -mx-4">
@@ -218,8 +133,6 @@ const ArtsPage = () => {
                     column={column}
                     handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    setModalOpen={setModalOpen}
-                    setModalImage={setModalImage}
                   />
                 </motion.div>
               );
@@ -233,8 +146,6 @@ const ArtsPage = () => {
                     column={column}
                     handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    setModalOpen={setModalOpen}
-                    setModalImage={setModalImage}
                   />
                 </motion.div>
               );
@@ -248,8 +159,6 @@ const ArtsPage = () => {
                     column={column}
                     handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    setModalOpen={setModalOpen}
-                    setModalImage={setModalImage}
                   />
                 </motion.div>
               );
@@ -259,15 +168,6 @@ const ArtsPage = () => {
         })}
       </div>
       <StickySection setCursorType={setCursorType} />
-
-      {modalOpen && (
-        <Modal
-          modalOpen={modalOpen}
-          handleClose={close}
-          modalImage={modalImage}
-          setCursorType={setCursorType}
-        />
-      )}
     </>
   );
 };

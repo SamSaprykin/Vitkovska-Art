@@ -93,8 +93,8 @@ const StyledSection = styled.section`
 `;
 
 export const query = graphql`
-  query CategoryQuery {
-    allContentfulArt(limit: 15) {
+  query CategoryQuery($category: String) {
+    allContentfulArt(filter: { category: { eq: $category } }) {
       edges {
         node {
           id

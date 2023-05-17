@@ -249,7 +249,7 @@ const Item = ({
   }, [controls, inView]);
 
   const navigateTo = () => {
-    navigate("/arts/architecture/");
+    navigate(`/arts/${column.title.toLowerCase()}/`);
   };
 
   console.log(images);
