@@ -81,7 +81,7 @@ const ArtWrapper = ({ handleMouseEnter, handleMouseLeave, column }) => {
 
         return (
           <Link
-            className="my-2 md:my-4 lg:my-8 block"
+            className="my-2 md:my-4 lg:my-8 block hover:cursor-none"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             key={artItem.filename}

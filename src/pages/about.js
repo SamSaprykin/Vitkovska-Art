@@ -63,7 +63,7 @@ const AboutPage = () => {
             <StaticImage
               src="../images/about-image.jpeg"
               alt="hero image"
-              placeholder="tracedSVG"
+              placeholder="dominantColor"
               layout="fixed"
               width={600}
               height={760}

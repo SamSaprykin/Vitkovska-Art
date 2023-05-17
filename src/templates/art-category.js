@@ -16,10 +16,13 @@ function Image({ element, index }) {
   const isDesktop = useMediaQuery({ minWidth: 600 });
   const y = useParallax(scrollYProgress, isDesktop ? 300 : 100);
   const image = getImage(element.node?.artImage?.gatsbyImageData);
-  console.log("image-data", image);
+
   return (
     <StyledSection className="h-[500px] md:h-[720px] lg:h-screen w-full flex justify-center items-center relative">
-      <div ref={ref} className="max-w-[320px] md:max-w-[360px]">
+      <div
+        ref={ref}
+        className="max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[440px] 2xl:max-w-[520px]"
+      >
         <GatsbyImage image={image} />
       </div>
       <ImageHeading
@@ -77,7 +80,7 @@ const StyledSection = styled.section`
 
   div {
     position: relative;
-    max-height: 70vh;
+    max-height: 100vh;
     margin: 20px;
     overflow: hidden;
 
@@ -85,6 +88,9 @@ const StyledSection = styled.section`
       object-fit: contain;
     }
 
+    @media (max-width: 1280px) {
+      max-height: 70vh;
+    }
     @media (max-width: 780px) {
       margin: 0;
     }
@@ -100,7 +106,7 @@ export const query = graphql`
           category
           artName
           artImage {
-            gatsbyImageData(width: 320, placeholder: DOMINANT_COLOR)
+            gatsbyImageData(width: 500, placeholder: DOMINANT_COLOR)
             url
           }
         }
