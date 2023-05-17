@@ -24,10 +24,10 @@ function SEO({ lang, meta, title, titleTemplate }) {
       }
     `,
   );
-
-  const metaDescription = description || site.siteMetadata.description;
   const description =
     "Welcome to the portfolio website of Vitkovskaya Kateryna, a talented freelance digital artist. Explore a captivating collection of digital artworks, illustrations, and designs created with a unique blend of creativity and technical expertise. Vitkovskaya Kateryna specializes in fantasy arts, delivering captivating visuals for a diverse range of projects. Hire [Artist Name] for your next creative endeavor or simply immerse yourself in the captivating world of digital art.";
+  const metaDescription = description || site.siteMetadata.description;
+
   const seoKeywords = [
     "freelance digital artist, digital art, illustrations, designs, creative, portfolio, fantasy, hire, artwork, projects",
   ];
