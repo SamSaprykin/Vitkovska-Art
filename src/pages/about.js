@@ -85,7 +85,7 @@ const AboutPage = () => {
                   <span className="italic font-serif">
                     freelance digital artist
                   </span>{" "}
-                  and I specialize in creating stunning artwork using a variety
+                  and I specialize in creating fantasy artwork using a variety
                   of tools and techniques.
                 </motion.span>
               </span>
