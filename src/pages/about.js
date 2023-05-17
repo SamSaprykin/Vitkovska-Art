@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 
 import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
-import SEO from "../components/seo";
 
+import SEO from "../components/seo";
 import { revealInOut, fade } from "../helpers/transitionHelper";
 import CursorContext from "../context/CursorContext";
 
@@ -39,8 +39,10 @@ const AboutPage = () => {
   }, [setCursorType]);
   return (
     <div className="pb-16" onMouseEnter={handleMouseDefault}>
-      <SEO title="About" />
-
+      <SEO
+        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
+        titleTemplate="About Page | Vitkovskaya Art"
+      />
       <motion.section
         initial="initial"
         animate="enter"

@@ -229,7 +229,10 @@ const ContactPage = () => {
       className="pb-16 w-[full] max-w-[1080px] mx-auto mb-4 md:mb-16 lg:mb-30"
       onMouseEnter={handleMouseDefault}
     >
-      <SEO title="About" />
+      <SEO
+        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
+        titleTemplate="Contact Page | Vitkovskaya Art"
+      />
       <div className="border-b-[1px] border-slate-100 w-full pb-8 md:pb-16">
         <h1 className="text-5xl md:text-7xl text-slate-100 leading-extratight font-normal tracking-wide font-sans font-medium mb-2 lg:mb-[50px] mt-16 md:mt-24 lg:mt-8">
           <motion.div variants={sentence} initial="hidden" animate="visible">

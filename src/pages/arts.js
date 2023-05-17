@@ -12,6 +12,7 @@ import useArtsColumns from "../hooks/useArtsPageColumns";
 import CursorContext from "../context/CursorContext";
 import { socialLinks } from "../components/categoryServices";
 import IconsLibrary from "../components/iconsLibrary";
+import SEO from "../components/seo";
 
 const StickySection = ({ setCursorType }) => {
   const handleMouseEnter = () => {
@@ -120,6 +121,10 @@ const ArtsPage = () => {
 
   return (
     <>
+      <SEO
+        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
+        titleTemplate="Featured Arts | Vitkovskaya Art"
+      />
       <div className="flex justify-center items-start h-full overflow-hidden -mx-4">
         {ArtsPageColumns.imagesColumns.map((column) => {
           switch (column.columnName) {

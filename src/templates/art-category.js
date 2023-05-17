@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import CursorContext from "../context/CursorContext";
+import SEO from "../components/seo";
 
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -18,20 +19,22 @@ function Image({ element, index }) {
   const image = getImage(element.node?.artImage?.gatsbyImageData);
 
   return (
-    <StyledSection className="h-[500px] md:h-[720px] lg:h-screen w-full flex justify-center items-center relative">
-      <div
-        ref={ref}
-        className="max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[440px] 2xl:max-w-[520px]"
-      >
-        <GatsbyImage image={image} />
-      </div>
-      <ImageHeading
-        style={{ y }}
-        className="absolute m-0  text-[54px] lg:text-[78px] tracking-wide  text-slate-100 font-sans font-black capitalize z-10 leading-tight	mix-blend-difference"
-      >
-        {`${index < 10 ? `#00${index}` : `#0${index}`}`}
-      </ImageHeading>
-    </StyledSection>
+    <>
+      <StyledSection className="h-[500px] md:h-[720px] lg:h-screen w-full flex justify-center items-center relative">
+        <div
+          ref={ref}
+          className="max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[440px] 2xl:max-w-[520px]"
+        >
+          <GatsbyImage image={image} />
+        </div>
+        <ImageHeading
+          style={{ y }}
+          className="absolute m-0  text-[54px] lg:text-[78px] tracking-wide  text-slate-100 font-sans font-black capitalize z-10 leading-tight	mix-blend-difference"
+        >
+          {`${index < 10 ? `#00${index}` : `#0${index}`}`}
+        </ImageHeading>
+      </StyledSection>
+    </>
   );
 }
 
@@ -52,17 +55,23 @@ export default function CategoryPage({ data, pageContext }) {
     });
   }, [setCursorType]);
   return (
-    <div>
-      {artsList.map((element, index) => (
-        <Image element={element} key={element.slug} index={index + 1} />
-      ))}
-      <div className="fixed w-full left-0 bottom-[20px] lg:bottom-[50px] flex flex-col	 justify-center items-center">
-        <ImageHeading className="mb-5  text-[32px] lg:text-[48px] tracking-wide  text-[#e78831] font-display capitalize z-10 leading-tight	mix-blend-difference">
-          {pageContext.category}
-        </ImageHeading>
-        <motion.div className="bg-white h-[5px] w-1/2" style={{ scaleX }} />
+    <>
+      <SEO
+        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
+        titleTemplate={`${pageContext.category} Arts | Vitkovskaya Art`}
+      />
+      <div>
+        {artsList.map((element, index) => (
+          <Image element={element} key={element.slug} index={index + 1} />
+        ))}
+        <div className="fixed w-full left-0 bottom-[20px] lg:bottom-[50px] flex flex-col	 justify-center items-center">
+          <ImageHeading className="mb-5  text-[32px] lg:text-[48px] tracking-wide  text-[#e78831] font-display capitalize z-10 leading-tight	mix-blend-difference">
+            {pageContext.category}
+          </ImageHeading>
+          <motion.div className="bg-white h-[5px] w-1/2" style={{ scaleX }} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ lang, meta, title, titleTemplate }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -22,19 +22,21 @@ function SEO({ description, lang, meta, title }) {
           }
         }
       }
-    `
-  )
+    `,
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
-
+  const metaDescription = description || site.siteMetadata.description;
+  const description =
+    "Welcome to the portfolio website of Vitkovskaya Kateryna, a talented freelance digital artist. Explore a captivating collection of digital artworks, illustrations, and designs created with a unique blend of creativity and technical expertise. Vitkovskaya Kateryna specializes in fantasy arts, delivering captivating visuals for a diverse range of projects. Hire [Artist Name] for your next creative endeavor or simply immerse yourself in the captivating world of digital art.";
+  const seoKeywords = [
+    "freelance digital artist, digital art, illustrations, designs, creative, portfolio, fantasy, hire, artwork, projects",
+  ];
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      title={titleTemplate}
       meta={[
         {
           name: `description`,
@@ -68,22 +70,31 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(
+          seoKeywords.length > 0
+            ? {
+                name: `keywords`,
+                content: seoKeywords?.join(`, `),
+              }
+            : [],
+        )
+        .concat(meta)}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;
