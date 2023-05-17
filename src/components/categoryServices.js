@@ -252,14 +252,12 @@ const Item = ({
     navigate(`/arts/${column.title.toLowerCase()}/`);
   };
 
-  console.log(images);
   const image = images[column.imageName];
   let gImage;
   if (image) {
     gImage = getImage(image.artImage);
   }
 
-  console.log(gImage, column.imageName);
   return (
     <ColumnServices
       key={column.title}

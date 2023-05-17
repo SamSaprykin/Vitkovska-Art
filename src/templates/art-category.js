@@ -15,9 +15,8 @@ function Image({ element, index }) {
   const { scrollYProgress } = useScroll({ target: ref });
   const isDesktop = useMediaQuery({ minWidth: 600 });
   const y = useParallax(scrollYProgress, isDesktop ? 300 : 100);
-  const image = getImage(element.node.artImage.gatsbyImageData);
-
-  console.log(image);
+  const image = getImage(element.node?.artImage?.gatsbyImageData);
+  console.log("image-data", image);
   return (
     <StyledSection className="h-[500px] md:h-[720px] lg:h-screen w-full flex justify-center items-center relative">
       <div ref={ref} className="max-w-[320px] md:max-w-[360px]">

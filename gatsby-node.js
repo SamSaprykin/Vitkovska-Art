@@ -17,7 +17,7 @@ exports.createPages = async ({ actions, graphql }) => {
   );
 
   const categorySet = new Set();
-  console.log(allArts.data.allContentfulArt.edges);
+
   allArts.data.allContentfulArt.edges.forEach((art) => {
     art.node.category && categorySet.add(art.node.category);
   });
@@ -25,7 +25,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const artCategoryListingTemplate = require.resolve(
     "./src/templates/art-category.js",
   );
-  console.log(categorySet);
+
   artsCategoryList.forEach((category) => {
     createPage({
       path: `/arts/${category.toLowerCase()}/`,
