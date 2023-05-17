@@ -94,7 +94,7 @@ function Hero() {
   };
   return (
     <div
-      className="pt-8 md:pt-12 lg:pt-0 relative min-h-[520px] md:min-h-[620px] lg:min-h-screen overflow-hidden lg:mx-8 w-full mb-12 md:mb-16 lg:mb-24 lg:mb-0"
+      className="pt-8 md:pt-12 lg:pt-0 relative min-h-[520px] md:min-h-[620px] lg:min-h-screen overflow-hidden lg:mx-8 w-[100%] mb-12 md:mb-16 lg:mb-24 lg:mb-0"
       onMouseEnter={handleMouseEnter}
     >
       <motion.h2
@@ -139,14 +139,13 @@ function Hero() {
       <div className="flex absolute translate-x-neg50 lg:rotate-neg90 bottom-0 lg:bottom-36 left-[50px] block">
         <ScrollDown />
       </div>
-      <div className="absolute right-0 lg:right-0 top-30 md:top-32 lg:top-0 w-[260px] md:w-[360px] lg:w-[600px] overflow-hidden">
+      <div className="absolute right-0 lg:right-16 top-30 md:top-32 lg:top-0 w-[260px] md:w-[360px] lg:w-[460px] overflow-hidden">
         <StaticImage
-          src="../images/hero-image.png"
+          src="../images/hero.jpg"
           alt="hero image"
-          placeholder="tracedSVG"
+          placeholder="dominantColor"
           layout="CONSTRAINED"
           width={600}
-          height={660}
         />
       </div>
     </div>

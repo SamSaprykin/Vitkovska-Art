@@ -39,6 +39,7 @@ const columnsList = [
     columnHeightClassname: "",
     widthColumn: "18%",
     heightColumn: "74%",
+    imageName: "scenery",
   },
   {
     id: 1,
@@ -47,6 +48,7 @@ const columnsList = [
     columnHeightClassname: "",
     widthColumn: "17%",
     heightColumn: "77%",
+    imageName: "characters",
   },
   {
     id: 2,
@@ -55,6 +57,7 @@ const columnsList = [
     columnHeightClassname: "",
     widthColumn: "20%",
     heightColumn: "83%",
+    imageName: "nature",
   },
   {
     id: 3,
@@ -63,7 +66,7 @@ const columnsList = [
     columnHeightClassname: "",
     widthColumn: "22%",
     heightColumn: "94%",
-    imageName: "crystal",
+    imageName: "fantasy",
   },
   {
     id: 4,
@@ -72,6 +75,7 @@ const columnsList = [
     columnHeightClassname: "",
     widthColumn: "20%",
     heightColumn: "83%",
+    imageName: "architecture",
   },
 ];
 
@@ -141,7 +145,31 @@ const CategoryServices = () => {
 
   const Images = useStaticQuery(graphql`
     query HighlightImage {
-      crystal: contentfulArt(artName: { eq: "Portal2" }) {
+      architecture: contentfulArt(artName: { eq: "Winter Castle" }) {
+        id
+        artImage {
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+        }
+      }
+      fantasy: contentfulArt(artName: { eq: "Portal-5" }) {
+        id
+        artImage {
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+        }
+      }
+      characters: contentfulArt(artName: { eq: "Lord of rings" }) {
+        id
+        artImage {
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+        }
+      }
+      nature: contentfulArt(artName: { eq: "Waterfall" }) {
+        id
+        artImage {
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+        }
+      }
+      scenery: contentfulArt(artName: { eq: "Hunt" }) {
         id
         artImage {
           gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
@@ -264,7 +292,7 @@ const Item = ({
       growDefault={column.growDefault}
       heightColumn={column.heightColumn}
       widthColumn={column.widthColumn}
-      className={`${column.backgroundColor} overflow-hidden pl-3 md:pl-4`}
+      className={`overflow-hidden pl-3 md:pl-4 relative`}
       onMouseEnter={() => handleMouseEnter(index)}
       onMouseLeave={handleMouseLeave}
       startHovering={startHovering}
@@ -273,8 +301,11 @@ const Item = ({
       animate={controls}
       onClick={navigateTo}
     >
+      <div
+        className={`absolute left-0 top-0 w-full h-full ${column.backgroundColor} z-10 opacity-75`}
+      />
       {gImage && (
-        <div className="absolute top-0 left-0 max-h-[200px] overflow-hidden flex jsutify-center items-center">
+        <div className="absolute top-0 left-0 h-full overflow-hidden flex jsutify-center items-center">
           <GatsbyImage image={gImage} alt={column.title} />
         </div>
       )}
@@ -315,6 +346,7 @@ const Wrapper = styled.div`
 const DescriptionWrapper = styled.div`
   height: 320px;
   position: relative;
+  z-index: 50;
 
   @media (min-width: 820px) {
     height: 47vh;
@@ -338,6 +370,10 @@ const ColumnServices = styled(motion.div)`
   align-items: flex-end;
   position: relative;
   transition: all 0.5s ease-in-out;
+
+  .gatsby-image-wrapper {
+    height: 100% !important;
+  }
 `;
 
 const CategoryName = styled.h3`
