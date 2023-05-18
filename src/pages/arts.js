@@ -100,7 +100,7 @@ const ArtsPage = () => {
   const { scrollY } = useViewportScroll();
   const { setCursorType } = useContext(CursorContext);
   const x1 = useTransform(scrollY, [0, 4500], [-120, 350]);
-  const x2 = useTransform(scrollY, [0, 4500], [-600, 950], { ease: circOut });
+  const x2 = useTransform(scrollY, [0, 4500], [-600, 1250], { ease: circOut });
   const x3 = useTransform(scrollY, [0, 4500], [-120, -100]);
 
   const ArtsPageColumns = useArtsColumns();

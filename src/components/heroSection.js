@@ -139,13 +139,14 @@ function Hero() {
       <div className="flex absolute translate-x-neg50 lg:rotate-neg90 bottom-0 lg:bottom-36 left-[50px] block">
         <ScrollDown />
       </div>
-      <div className="absolute right-0 lg:right-16 top-30 md:top-32 lg:top-0 w-[260px] md:w-[360px] lg:w-[520px] overflow-hidden">
+      <div className="absolute right-0 lg:right-16 top-30 md:top-32 lg:top-0 w-[260px] md:w-[360px] lg:w-[580px] overflow-hidden">
         <StaticImage
           src="../images/hero.jpg"
           alt="hero image"
           placeholder="dominantColor"
           layout="CONSTRAINED"
-          width={600}
+          width={800}
+          quality={100}
         />
       </div>
     </div>
