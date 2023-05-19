@@ -132,6 +132,7 @@ const CommissionsPage = () => {
       <SEO
         title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
         titleTemplate="Comissions + FAQ | Vitkovskaya Art"
+        url="https://www.vitkovskaya.art/commissions-info"
       />
       <h1 className="text-[34px] md:text-6xl text-slate-100 leading-extratight font-normal tracking-wide font-display font-medium mb-2 lg:mb-[50px] mt-14 lg:mt-8">
         Commisions are{" "}

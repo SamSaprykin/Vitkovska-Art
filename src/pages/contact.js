@@ -232,6 +232,7 @@ const ContactPage = () => {
       <SEO
         title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
         titleTemplate="Contact Page | Vitkovskaya Art"
+        url="https://www.vitkovskaya.art/contact"
       />
       <div className="border-b-[1px] border-slate-100 w-full pb-8 md:pb-16">
         <h1 className="text-5xl md:text-7xl text-slate-100 leading-extratight font-normal tracking-wide font-sans font-medium mb-2 lg:mb-[50px] mt-16 md:mt-24 lg:mt-8">

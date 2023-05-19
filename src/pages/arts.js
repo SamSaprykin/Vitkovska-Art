@@ -124,6 +124,7 @@ const ArtsPage = () => {
       <SEO
         title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
         titleTemplate="Featured Arts | Vitkovskaya Art"
+        url="https://www.vitkovskaya.art/arts"
       />
       <div className="flex justify-center items-start h-full overflow-hidden -mx-4">
         {ArtsPageColumns.imagesColumns.map((column) => {

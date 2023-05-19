@@ -59,6 +59,7 @@ export default function CategoryPage({ data, pageContext }) {
       <SEO
         title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
         titleTemplate={`${pageContext.category} Arts | Vitkovskaya Art`}
+        url={`https://www.vitkovskaya.art/${pageContext.category}`}
       />
       <div>
         {artsList.map((element, index) => (

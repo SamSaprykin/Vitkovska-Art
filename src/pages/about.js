@@ -42,6 +42,7 @@ const AboutPage = () => {
       <SEO
         title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
         titleTemplate="About Page | Vitkovskaya Art"
+        url="https://www.vitkovskaya.art/about"
       />
       <motion.section
         initial="initial"
