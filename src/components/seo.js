@@ -9,8 +9,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import usePreviewImage from "../hooks/usePreviewImage";
 
-function SEO({ lang, meta, title, titleTemplate }) {
+function SEO({ lang, meta, title, titleTemplate, url }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -24,6 +25,8 @@ function SEO({ lang, meta, title, titleTemplate }) {
       }
     `,
   );
+  const previewImage = usePreviewImage();
+
   const description =
     "Welcome to the portfolio website of Vitkovskaya Kateryna, a talented freelance digital artist. Explore a captivating collection of digital artworks, illustrations, and designs created with a unique blend of creativity and technical expertise. Vitkovskaya Kateryna specializes in fantasy arts, delivering captivating visuals for a diverse range of projects. Hire [Artist Name] for your next creative endeavor or simply immerse yourself in the captivating world of digital art.";
   const metaDescription = description || site.siteMetadata.description;
@@ -55,8 +58,36 @@ function SEO({ lang, meta, title, titleTemplate }) {
           content: `website`,
         },
         {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: description,
+        },
+        {
+          property: `og:image`,
+          content: previewImage.file.url,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          property: `og:url`,
+          content: url,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:description`,
+          content: description,
+        },
+        {
+          property: `twitter:image`,
+          content: previewImage.file.url,
         },
         {
           name: `twitter:creator`,

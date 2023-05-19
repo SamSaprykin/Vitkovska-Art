@@ -17,7 +17,7 @@ const useLatestArts = () => {
           }
         }
       }
-    `
+    `,
   );
 
   return allContentfulArt;
