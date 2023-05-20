@@ -219,6 +219,7 @@ const CategoryServices = () => {
                   onMouseLeave={handleMouseLeaveLink}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`Follow me on ${social.name}`}
                 >
                   <IconsLibrary type={social.name} />
                 </a>
