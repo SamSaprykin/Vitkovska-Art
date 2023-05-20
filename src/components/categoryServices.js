@@ -146,33 +146,28 @@ const CategoryServices = () => {
   const Images = useStaticQuery(graphql`
     query HighlightImage {
       architecture: contentfulArt(artName: { eq: "Winter Castle" }) {
-        id
         artImage {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 50)
         }
       }
       fantasy: contentfulArt(artName: { eq: "Portal-5" }) {
-        id
         artImage {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 50)
         }
       }
       characters: contentfulArt(artName: { eq: "Lord of rings" }) {
-        id
         artImage {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 50)
         }
       }
       nature: contentfulArt(artName: { eq: "Waterfall" }) {
-        id
         artImage {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 50)
         }
       }
       scenery: contentfulArt(artName: { eq: "Hunt" }) {
-        id
         artImage {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 100)
+          gatsbyImageData(placeholder: DOMINANT_COLOR, width: 600, quality: 50)
         }
       }
     }

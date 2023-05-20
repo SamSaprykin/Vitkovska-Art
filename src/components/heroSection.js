@@ -145,7 +145,7 @@ function Hero() {
           alt="hero image"
           placeholder="dominantColor"
           layout="CONSTRAINED"
-          width={800}
+          width={600}
           quality={100}
         />
       </div>

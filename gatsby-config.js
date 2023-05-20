@@ -40,6 +40,7 @@ module.exports = {
     },
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-preload-fonts`,
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
