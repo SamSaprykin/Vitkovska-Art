@@ -16,22 +16,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          formats: [`auto`, `webp`],
-          placeholder: `dominantColor`,
-          breakpoints: [320, 600, 750, 1080, 1366, 1920],
-          backgroundColor: `transparent`,
-          blurredOptions: {},
-          jpgOptions: {},
-          pngOptions: {},
-          webpOptions: {},
-          avifOptions: {},
-        },
-      },
-    },
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-contentful`,
