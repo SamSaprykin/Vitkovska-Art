@@ -89,19 +89,28 @@ const DesktopVariant = () => {
 
 const MobileVariant = () => {
   return (
-    <div className="inset-x-0	will-change-transform">
-      <div className="relative flex-col">
-        <div className="md:w-full lg:w-screen flex">
-          <Hero />
-        </div>
-        <div className="md:w-full lg:w-screen flex">
-          <HomeServices />
-        </div>
-        <div className="md:w-full lg:w-screen flex">
-          <CategoryServices />
+    <>
+      <SEO
+        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
+        titleTemplate="Home Page | Vitkovskaya Art"
+        description="Welcome to the portfolio website of Vitkovskaya Kateryna, a talented freelance digital artist. Explore a captivating collection of digital artworks, illustrations, and designs created with a unique blend of creativity and technical expertise. Vitkovskaya Kateryna specializes in fantasy arts, delivering captivating visuals for a diverse range of projects. Hire Vitkovskaya Kateryna for your next creative endeavor or simply immerse yourself in the captivating world of digital art."
+        keywords="freelance digital artist, digital art, illustrations, designs, creative, portfolio, fantasy, hire, artwork, projects"
+        url="https://www.vitkovskaya.art/"
+      />
+      <div className="inset-x-0	will-change-transform">
+        <div className="relative flex-col">
+          <div className="md:w-full lg:w-screen flex">
+            <Hero />
+          </div>
+          <div className="md:w-full lg:w-screen flex">
+            <HomeServices />
+          </div>
+          <div className="md:w-full lg:w-screen flex">
+            <CategoryServices />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 const IndexPage = () => {
