@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import Header from "./header";
 import CursorContext from "../context/CursorContext";
 import Cursor from "./cursor";
@@ -38,7 +39,7 @@ const Layout = ({ children, location }) => {
       }
     }
   `);
-
+  const isDesktop = useMediaQuery({ minWidth: 821 });
   const [magnetActive, setMagnetActive] = useState(false);
   const [cursorType, setCursorType] = useState({
     type: "default",
@@ -47,7 +48,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>
-      <Cursor hideCursor={magnetActive} />
+      {isDesktop && <Cursor hideCursor={magnetActive} />}
       <Header
         siteTitle={data.site.siteMetadata.title}
         location={location}
