@@ -168,7 +168,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  *from 250 usd
+                  *from 280 usd
                 </span>
               </div>
             </li>
@@ -203,7 +203,7 @@ const CommissionsPage = () => {
                 </div>
 
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  *from 170 usd
+                  *from 200 usd
                 </span>
               </div>
             </li>
@@ -239,7 +239,7 @@ const CommissionsPage = () => {
                 </div>
 
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  *from 180 usd
+                  *from 190 usd
                 </span>
               </div>
             </li>
@@ -276,7 +276,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  *from 220 usd
+                  *from 250 usd
                 </span>
               </div>
             </li>
@@ -310,7 +310,7 @@ const CommissionsPage = () => {
                   </a>
                 </div>
                 <span className="text-2xl lg:text-3xl pt-0 md:pt-12 align-bottom h-full">
-                  *from 240 usd
+                  *from 270 usd
                 </span>
               </div>
             </li>
@@ -325,9 +325,9 @@ const CommissionsPage = () => {
         <h3 className="text-3xl md:text-4xl lg:text-5xl text-slate-100 leading-extratight font-black tracking-wide font-display mb-[32px] lg:mb-16">
           Frequently asked questions
         </h3>
-        {accordionItems.map((details, index) => (
+        {accordionItems.map((details) => (
           <Accordion
-            key={index}
+            key={details.title}
             details={details}
             expanded={expanded}
             setExpanded={setExpanded}
