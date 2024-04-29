@@ -47,5 +47,26 @@ module.exports = {
         postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
       },
     },
+    {
+      resolve: "@sentry/gatsby",
+      options: {
+        dsn: process.env.SENTRY_DSN,
+
+        tracesSampleRate: 1,
+
+        tracesSampler: (samplingContext) => {
+          if ("...") {
+            return 0.5; // These are important - take a big sample
+          }
+          if ("...") {
+            return 0.01; // These are less important or happen much more frequently - only take 1% of them
+          }
+          if ("...") {
+            return 0; // These aren't something worth tracking - drop all transactions like this
+          }
+          return 0.1; // Default sample rate
+        },
+      },
+    },
   ],
 };
