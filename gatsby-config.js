@@ -42,30 +42,15 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-preload-fonts`,
     {
-      resolve: `gatsby-plugin-postcss`,
+      resolve: "gatsby-plugin-google-gtag",
       options: {
-        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+        trackingIds: ["G-SNKXE8TBWF"],
       },
     },
     {
-      resolve: "@sentry/gatsby",
+      resolve: `gatsby-plugin-postcss`,
       options: {
-        dsn: process.env.SENTRY_DSN,
-
-        tracesSampleRate: 1,
-
-        tracesSampler: (samplingContext) => {
-          if ("...") {
-            return 0.5; // These are important - take a big sample
-          }
-          if ("...") {
-            return 0.01; // These are less important or happen much more frequently - only take 1% of them
-          }
-          if ("...") {
-            return 0; // These aren't something worth tracking - drop all transactions like this
-          }
-          return 0.1; // Default sample rate
-        },
+        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
       },
     },
   ],
