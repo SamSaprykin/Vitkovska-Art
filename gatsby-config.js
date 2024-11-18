@@ -5,6 +5,7 @@ module.exports = {
     title: `Vitkovska Keteryna website`,
     description: `Vitkovska Keteryna website`,
     author: `SamS`,
+    siteUrl: `https://www.vitkovskaya.art`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -41,6 +42,8 @@ module.exports = {
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-preload-fonts`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
