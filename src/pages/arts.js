@@ -122,8 +122,8 @@ const ArtsPage = () => {
   return (
     <>
       <SEO
-        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
-        titleTemplate="Featured Arts | Vitkovskaya Art"
+        title="Freelance Digital Artist | Portfolio of Vitkovska Kateryna"
+        titleTemplate="Featured Arts | Vitkovska Art"
         url="https://www.vitkovskaya.art/arts"
       />
       <div className="flex justify-center items-start h-full overflow-hidden -mx-4">

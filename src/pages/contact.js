@@ -230,8 +230,8 @@ const ContactPage = () => {
       onMouseEnter={handleMouseDefault}
     >
       <SEO
-        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
-        titleTemplate="Contact Page | Vitkovskaya Art"
+        title="Freelance Digital Artist | Portfolio of Vitkovska Kateryna"
+        titleTemplate="Contact Page | Vitkovska Art"
         url="https://www.vitkovskaya.art/contact"
       />
       <div className="border-b-[1px] border-slate-100 w-full pb-8 md:pb-16">

@@ -40,8 +40,8 @@ const AboutPage = () => {
   return (
     <div className="pb-16" onMouseEnter={handleMouseDefault}>
       <SEO
-        title="Freelance Digital Artist | Portfolio of Vitkovskaya Kateryna"
-        titleTemplate="About Page | Vitkovskaya Art"
+        title="Freelance Digital Artist | Portfolio of Vitkovska Kateryna"
+        titleTemplate="About Page | Vitkovska Art"
         url="https://www.vitkovskaya.art/about"
       />
       <motion.section
