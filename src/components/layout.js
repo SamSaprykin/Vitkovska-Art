@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { ReactLenis } from "@studio-freight/react-lenis";
 import Header from "./header";
 import CursorContext from "../context/CursorContext";
 import Cursor from "./cursor";
@@ -48,26 +49,28 @@ const Layout = ({ children, location }) => {
 
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>
-      {isDesktop && <Cursor hideCursor={magnetActive} />}
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        location={location}
-        setMagnetActive={setMagnetActive}
-        magnetActive={magnetActive}
-      />
-      <div className="pt-16 lg:pt-32 px-6 md:px-8 bg-bgMain">
-        <AnimatePresence>
-          <motion.main
-            key={location.pathname}
-            variants={variants}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-          >
-            {children}
-          </motion.main>
-        </AnimatePresence>
-      </div>
+      <ReactLenis root>
+        {isDesktop && <Cursor hideCursor={magnetActive} />}
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          location={location}
+          setMagnetActive={setMagnetActive}
+          magnetActive={magnetActive}
+        />
+        <div className="pt-16 lg:pt-32 px-6 md:px-8 bg-bgMain">
+          <AnimatePresence>
+            <motion.main
+              key={location.pathname}
+              variants={variants}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+            >
+              {children}
+            </motion.main>
+          </AnimatePresence>
+        </div>
+      </ReactLenis>
     </CursorContext.Provider>
   );
 };

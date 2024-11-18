@@ -27,8 +27,6 @@ body {
   overflow-x: hidden;
 }
 
-
-/* Founders Grotesk */
 @font-face {
   font-family: 'Helvetica Neue';
   src:  url('../fonts/HelveticaNeue.woff') format('woff');
@@ -93,4 +91,99 @@ html {
   html {
     scroll-snap-type: none;
   }
+}
+
+
+.grid__item {
+	position: relative;
+	will-change: transform;
+	grid-column: var(--c);
+	grid-row: var(--r);
+}
+
+.grid__item-img {
+	position: relative;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	background-size: cover;
+	background-position: 50% 50%;
+	will-change: transform, opacity;
+}
+
+
+.cover {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.cover__title {
+	font-family: novecento-sans-wide, sans-serif;
+	font-size: 8vw;
+	font-weight: 600;
+	margin: 0;
+}
+
+.cover__title sup {
+	font-size: 4vw;
+	font-weight: bold;
+	vertical-align: 75%;
+}
+
+.cover__subtitle {
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin: 0;
+}
+
+.footer {
+	color: var(--color-text-alt);
+	background: var(--color-bg-alt);
+	height: 100vh;
+	font-size: 5vh;
+	line-height: 1.2;
+	position: relative;
+	z-index: 200;
+	text-transform: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer p {
+	max-width: 40ch;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		height: 100vh;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas: 'prev sponsor' '... ...' 'title demos';
+	}
+	.frame__demos {
+		justify-self: end;
+		margin: 0 1rem;
+		white-space: nowrap;
+	}
+	.frame__demo--current::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		height: 120%;
+		width: 1px;
+		left: 50%;
+		background: currentColor;
+	}
+	.frame__demos-title {
+		display: inline;
+	}
 }

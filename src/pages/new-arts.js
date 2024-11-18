@@ -1,99 +1,23 @@
-import React, { useEffect, useRef, useContext, useState } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import { useLenis } from "@studio-freight/react-lenis";
 import CursorContext from "../context/CursorContext";
 import useAllArts from "../hooks/useAllArts";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Modal = ({ isOpen, onClose, image }) => {
-  const modalRef = useRef(null);
-  const contentRef = useRef(null);
-  const lenis = useLenis();
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("no-scroll");
-      lenis.stop();
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" },
-      );
-      gsap.fromTo(
-        contentRef.current,
-        { scale: 0.8, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-          delay: 0.1,
-        },
-      );
-    } else {
-      document.body.classList.remove("no-scroll");
-      lenis.start();
-    }
-
-    return () => {
-      document.body.classList.remove("no-scroll");
-      lenis.start();
-    };
-  }, [isOpen, lenis]);
-
-  if (!isOpen) return null;
+const ArtWrapper = ({ artItem, handleMouseEnter, handleMouseLeave }) => {
+  const image = getImage(artItem.artImage); // Ensure artImage is compatible with GatsbyImage
 
   return (
-    <div
-      ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 p-16"
-      onClick={onClose}
-    >
-      <div
-        ref={contentRef}
-        className="relative overflow-auto rounded-lg shadow-xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-full"
-          aria-label="Close modal"
-        ></button>
-        <div className="flex justify-center items-center">
-          <GatsbyImage
-            image={image}
-            className="rounded-lg object-contain h-full"
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ArtWrapper = ({
-  artItem,
-  handleMouseEnter,
-  handleMouseLeave,
-  onClick,
-}) => {
-  const image = getImage(artItem.artImage);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    onClick(artItem);
-  };
-
-  return (
-    <div className="grid__item-img relative w-full aspect-square bg-cover bg-center mt-24 hover:cursor-none">
+    <div className="grid__item-img relative w-full aspect-square bg-cover bg-center mt-24">
       <Link
         className="my-2 md:my-4 lg:my-8 block hover:cursor-none"
         to={artItem.category.toLowerCase()}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleClick}
       >
         <GatsbyImage image={image} className="!w-full overflow-hidden" />
       </Link>
@@ -104,7 +28,6 @@ const ArtWrapper = ({
 const GridScrollAnimations = () => {
   const lenisRef = useRef();
   const { setCursorType } = useContext(CursorContext);
-  const [selectedArt, setSelectedArt] = useState(null);
 
   useEffect(() => {
     function update(time) {
@@ -205,16 +128,8 @@ const GridScrollAnimations = () => {
     });
   };
 
-  const handleArtClick = (artItem) => {
-    setSelectedArt(artItem);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedArt(null);
-  };
-
   return (
-    <div className="text-gray-100 mt-12 selectedArt">
+    <div className="text-gray-100 mt-12">
       <div className="content">
         <div className="grid grid-cols-4 gap-0 relative">
           {allArts.edges.map((artItem, i) => {
@@ -232,7 +147,6 @@ const GridScrollAnimations = () => {
                   artItem={artItem.node}
                   handleMouseEnter={handleMouseEnter}
                   handleMouseLeave={handleMouseLeave}
-                  onClick={handleArtClick}
                 />
               </div>
             );
@@ -240,21 +154,12 @@ const GridScrollAnimations = () => {
         </div>
 
         <div className="fixed inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <h2 className="lg:text-7xl text-5xl font-sans uppercase tracking-wider">
-            Vitkovskaya
+          <h2 className="text-[6vw] font-sans uppercase tracking-wider">
+            Vitkovska
           </h2>
-          <h3 className="lg:text-6xl text-4xl font-sans tracking-wider">ART</h3>
+          <h3 className="text-[4vw] font-sans tracking-wider">ART</h3>
         </div>
       </div>
-      {selectedArt && (
-        <Modal
-          isOpen={!!selectedArt}
-          onClose={handleCloseModal}
-          image={getImage(selectedArt.artImage)}
-          title={selectedArt.title}
-          description={selectedArt.description}
-        />
-      )}
     </div>
   );
 };
