@@ -15,11 +15,6 @@ export const socialLinks = [
     link: "https://www.instagram.com/vitkovskaya_art/",
   },
   {
-    name: "twitter",
-    type: "Twitter",
-    link: "https://twitter.com/vitkovskaya_art",
-  },
-  {
     name: "art-station",
     type: "Artstation",
     link: "https://www.artstation.com/vitkovskaya",
@@ -28,6 +23,21 @@ export const socialLinks = [
     name: "tiktok",
     type: "Tiktok",
     link: "https://www.tiktok.com/@vitkovskaya_art",
+  },
+  {
+    name: "cara",
+    type: "Cara",
+    link: "https://cara.app/vitkovskayaart",
+  },
+  {
+    name: "bluesky",
+    type: "Bluesky",
+    link: "https://bsky.app/profile/vitkovskayaart.bsky.social",
+  },
+  {
+    name: "youtube",
+    type: "Youtube",
+    link: "https://www.youtube.com/@KaterynaVitkovska",
   },
 ];
 

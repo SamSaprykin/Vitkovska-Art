@@ -2,8 +2,8 @@ require("dotenv").config({ path: ".env" });
 
 module.exports = {
   siteMetadata: {
-    title: `Vitkovskaya Keteryna website`,
-    description: `Vitkovskaya Keteryna website`,
+    title: `Vitkovska Keteryna website`,
+    description: `Vitkovska Keteryna website`,
     author: `SamS`,
   },
   plugins: [

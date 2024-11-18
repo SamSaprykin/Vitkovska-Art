@@ -4,7 +4,7 @@ const usePreviewImage = () => {
   const { contentfulAsset } = useStaticQuery(
     graphql`
       query {
-        contentfulAsset(filename: { eq: "preview-image.jpg" }) {
+        contentfulAsset(filename: { eq: "logo w copy.png" }) {
           id
           file {
             url
