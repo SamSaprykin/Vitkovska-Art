@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/arts/architecture", "destination": "/arts/" },
+    { "source": "/arts/scenery", "destination": "/arts/" },
+    { "source": "/arts/backgrounds", "destination": "/arts/" },
+    { "source": "/arts/nature", "destination": "/arts/" },
+    { "source": "/arts/fantasy", "destination": "/arts/" },
+    { "source": "/arts/characters", "destination": "/arts/" }
+  ]
+}
