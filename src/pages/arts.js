@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { useLenis } from "@studio-freight/react-lenis";
+import { motion, useScroll, useTransform } from "framer-motion";
 import CursorContext from "../context/CursorContext";
 import useAllArts from "../hooks/useAllArts";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Modal = ({ isOpen, onClose, image }) => {
   const modalRef = useRef(null);
@@ -78,6 +77,8 @@ const ArtWrapper = ({
   handleMouseEnter,
   handleMouseLeave,
   onClick,
+  row,
+  col,
 }) => {
   const image = getImage(artItem.artImage);
 
@@ -85,70 +86,54 @@ const ArtWrapper = ({
     e.preventDefault();
     onClick(artItem);
   };
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const opacity = useTransform(scrollYProgress, [0.2, 0.8], [0.5, 1]);
 
   return (
-    <div className="grid__item-img relative w-full aspect-square bg-cover bg-center mt-24 hover:cursor-none">
-      <Link
-        className="my-2 md:my-4 lg:my-8 block hover:cursor-none"
-        to={artItem.category.toLowerCase()}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleClick}
-      >
-        <GatsbyImage image={image} className="!w-full overflow-hidden" />
-      </Link>
-    </div>
+    <motion.div
+      className={"grid__item relative group"}
+      style={{
+        "--r": row,
+        "--c": col,
+        scale: scrollYProgress,
+        x: scrollYProgress,
+        opacity,
+      }}
+      ref={ref}
+    >
+      <div className="grid__item-img relative w-full aspect-square bg-cover bg-center hover:cursor-none mb-12 lg:mb-24">
+        <Link
+          className="my-2 md:my-4 lg:my-8 block hover:cursor-none"
+          to={artItem.category.toLowerCase()}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
+        >
+          <GatsbyImage image={image} className="!w-full overflow-hidden" />
+        </Link>
+      </div>
+    </motion.div>
   );
 };
 
 const GridScrollAnimations = () => {
-  const lenisRef = useRef();
+  const lenis = useLenis();
   const { setCursorType } = useContext(CursorContext);
   const [selectedArt, setSelectedArt] = useState(null);
 
   useEffect(() => {
     function update(time) {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenis?.raf(time * 1000);
     }
 
     gsap.ticker.add(update);
 
     return () => gsap.ticker.remove(update);
-  }, []);
+  }, [lenis]);
 
   const allArts = useAllArts();
 
-  useEffect(() => {
-    const gridItems = [...document.querySelectorAll(".grid > .grid__item")];
-
-    // GSAP animations for each grid item
-    const lenis = lenisRef.current?.lenis;
-    const scrollFn = (time) => {
-      lenis?.raf(time);
-      requestAnimationFrame(scrollFn);
-    };
-    requestAnimationFrame(scrollFn);
-    gridItems.forEach((item) => {
-      const image = item.querySelector(".grid__item-img");
-
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: item,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        })
-        .set(image, {
-          transformOrigin: `${gsap.utils.random(0, 1) > 0.5 ? 0 : 100}% 100%`,
-        })
-        .to(image, {
-          ease: "none",
-          scale: 0,
-        });
-    });
-  }, []);
   const gridPositions = [
     { row: 1, col: 1 },
     { row: 2, col: 2 },
@@ -220,21 +205,15 @@ const GridScrollAnimations = () => {
           {allArts.edges.map((artItem, i) => {
             const { row, col } = gridPositions[i] || { row: 1, col: 1 };
             return (
-              <div
+              <ArtWrapper
                 key={i}
-                className="grid__item relative group"
-                style={{
-                  "--r": row,
-                  "--c": col,
-                }}
-              >
-                <ArtWrapper
-                  artItem={artItem.node}
-                  handleMouseEnter={handleMouseEnter}
-                  handleMouseLeave={handleMouseLeave}
-                  onClick={handleArtClick}
-                />
-              </div>
+                artItem={artItem.node}
+                handleMouseEnter={handleMouseEnter}
+                handleMouseLeave={handleMouseLeave}
+                onClick={handleArtClick}
+                row={row}
+                col={col}
+              />
             );
           })}
         </div>
