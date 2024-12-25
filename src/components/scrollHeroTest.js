@@ -33,6 +33,13 @@ const ImagesTest = () => {
     { ease: circOut },
   );
 
+  const borderRadius = useTransform(
+    spring,
+    [0, 300, 1900, 2400],
+    ["0px", "0px", "0px", "10px"],
+    { ease: circOut },
+  );
+
   const divHeight = useTransform(
     spring,
     [0, 300, 1900, 2400],
@@ -57,11 +64,13 @@ const ImagesTest = () => {
         <motion.div
           style={{
             width: divWidth,
+            borderRadius,
             height: divHeight,
             margin: "0 auto",
             position: "sticky",
             top: "0px",
           }}
+          className="overflow-hidden"
         >
           <VideoComponent iframeUrl="//videos.ctfassets.net/zogcnwgo7tun/6x7DVw7Ndjipd13Wwt0aa2/9e50e14663cd0ac55959db69fc19d3f1/Aluproteck.mp4" />
           <div className="w-3/4 border-b-2 border-slate-200 absolute bottom-[50px] left-0 opacity-50 mx-8">

@@ -8,10 +8,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import CursorContext from "../context/CursorContext";
 import useAllArts from "../hooks/useAllArts";
 
-const Modal = ({ isOpen, onClose, image }) => {
+export const Modal = ({ isOpen, onClose, image, backgroundColor }) => {
   const modalRef = useRef(null);
   const contentRef = useRef(null);
   const lenis = useLenis();
+
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("no-scroll");
@@ -48,12 +49,12 @@ const Modal = ({ isOpen, onClose, image }) => {
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 p-16"
+      className={`fixed inset-0 z-150 flex items-center justify-center p-4 bg-[${backgroundColor}] bg-opacity-90 p-16 w-screen h-screen top-0 left-0`}
       onClick={onClose}
     >
       <div
         ref={contentRef}
-        className="relative overflow-auto rounded-lg shadow-xl"
+        className="relative overflow-auto rounded-lg shadow-xl p-24"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -62,10 +63,7 @@ const Modal = ({ isOpen, onClose, image }) => {
           aria-label="Close modal"
         ></button>
         <div className="flex justify-center items-center">
-          <GatsbyImage
-            image={image}
-            className="rounded-lg object-contain h-full"
-          />
+          <GatsbyImage image={image} className="object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -197,7 +195,6 @@ const GridScrollAnimations = () => {
   const handleCloseModal = () => {
     setSelectedArt(null);
   };
-
   return (
     <div className="text-gray-100 mt-12 selectedArt">
       <div className="content">
