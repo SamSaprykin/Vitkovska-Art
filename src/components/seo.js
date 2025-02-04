@@ -101,6 +101,10 @@ function SEO({ lang, meta, title, titleTemplate, url }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: "google-site-verification",
+          content: "YB4OP55r0QzfoJqafiKLJ7iIUQBbb8aZQpZXaq9H9tg",
+        },
       ]
         .concat(
           seoKeywords.length > 0
