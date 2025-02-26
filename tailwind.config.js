@@ -32,7 +32,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Saol Display", "Helvetica", "Arial", "sans-serif"],
+        sans: ["Lora", "Helvetica", "Arial", "sans-serif"],
         display: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
